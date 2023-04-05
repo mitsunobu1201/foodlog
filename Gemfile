@@ -70,3 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# 追加gem
+gem "devise"
+gem "enum_help"
