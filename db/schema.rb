@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_05_081204) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_05_225129) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -21,6 +21,47 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_05_081204) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "comment_user_id", null: false
+    t.text "comment", null: false
+    t.date "ymd", null: false
+    t.integer "timeframe", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.integer "calorie", null: false
+    t.float "protein", null: false
+    t.float "fat", null: false
+    t.float "carbohydrate", null: false
+    t.text "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "food_id", null: false
+    t.date "ymd", null: false
+    t.integer "timeframe", null: false
+    t.integer "quantity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nices", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "nice_user_id", null: false
+    t.date "ymd", null: false
+    t.integer "timeframe", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
