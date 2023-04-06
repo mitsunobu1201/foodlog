@@ -1,3 +1,8 @@
 <h1>
   ユーザー　一覧ページ
 </h1>
+<% @members.each do |member| %>
+<h6><%= link_to member.name,member_path(member.id),class:"pb-2" %></h6>
+<p><%= member.profile %></p>
+<p><%= member.purpose_i18n %></p>
+<% end %>

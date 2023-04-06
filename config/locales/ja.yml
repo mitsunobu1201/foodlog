@@ -1,0 +1,9 @@
+# 目的の日本語化
+ja:
+  enums:
+    user:
+      purpose:
+        training: 筋力トレーニング
+        diet: ダイエット
+        health: 健康維持
+        etc: その他
