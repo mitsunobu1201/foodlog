@@ -1,19 +1,25 @@
 Rails.application.routes.draw do
 # 顧客用
-# URL /customers/sign_in ...
-devise_for :users,skip: [:passwords], controllers: {
+devise_for :users,skip: [:passwords],controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
 # 管理者用
-# URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+#ログアウト時にルートエラーになるため追記
+devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
 root :to => "public/homes#top"
 get "about" => "public/homes#about", as: "about"
 
+scope module: 'public' do
+  resources :members, only: [:index, :show]
+end
 
 end

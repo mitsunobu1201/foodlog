@@ -17,12 +17,29 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
+
             <li class="m-3">
-             ログインしているよ
+              <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
+            </li>
+            <li class="m-3">
+              <%= link_to "MyPage", member_path(current_user), class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Users", members_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
             </li>
           <% else %>
             <li class="m-3">
-             ログインしてないよ<i class="fa-solid fa-house"></i>
+              <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
+            </li>
+            <li class="m-3">
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark border border-secondary rounded' %>
+
             </li>
 
           <% end %>
