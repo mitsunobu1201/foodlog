@@ -11,4 +11,9 @@ devise_for :users,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+root :to => "public/homes#top"
+get "about" => "public/homes#about", as: "about"
+
+
 end
