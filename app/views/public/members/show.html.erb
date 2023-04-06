@@ -1,1 +1,10 @@
 <h1>ユーザー詳細ページ(マイページ)</h1>
+<% if @member == @current_member %>
+<p>マイページ</p>
+<%= @year %>年<%= @month %>月<%= @day %>日(<%= @days[@weekday] %>)
+<p>明日<%= link_to @tomorrow.strftime("%Y/%-m/%-d"),member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day) %></p>
+<p>明日<%= link_to @yesterday.strftime("%Y/%-m/%-d"),member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %></p>
+
+<% else %>
+<%= @member.name %>さんページ
+<% end %>

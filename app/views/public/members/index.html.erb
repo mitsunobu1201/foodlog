@@ -2,7 +2,7 @@
   ユーザー　一覧ページ
 </h1>
 <% @members.each do |member| %>
-<h6><%= link_to member.name,member_path(member.id),class:"pb-2" %></h6>
-<p><%= member.profile %></p>
-<p><%= member.purpose_i18n %></p>
+<h6><%= link_to member.name, member_path(member: member.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"pb-2" %></h6>
+<p>プロフィール：<%= member.profile %></p>
+<p>目的：<%= member.purpose_i18n %></p>
 <% end %>
