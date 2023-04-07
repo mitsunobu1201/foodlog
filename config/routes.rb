@@ -21,9 +21,15 @@ get "about" => "public/homes#about", as: "about"
 scope module: 'public' do
   resources :members, only: [:index]
 end
-
 get 'member/:member/:year/:month/:day' => 'public/members#show',as: "member"
 
 
+scope module: 'public' do
+  resources :foods, only: [:index,:new,:create,:destroy]
+end
+
+scope module: 'public' do
+  resources :meals, only: [:new,:create,:destroy]
+end
 
 end

@@ -1,0 +1,28 @@
+<h1>食品登録</h1>
+<%= form_with model:@newfood,url: foods_path,local: true do |f| %>
+   <div class="field">
+    <%= f.label :name,"食品名" %><br />
+    <%= f.text_field :name,class:"w-50"%>
+  </div>
+    <div class="field">
+    <%= f.label :calorie,"カロリー" %><br />
+    <%= f.number_field :calorie,class:"w-50"%>
+  </div>
+  <div class="field">
+    <%= f.label :protein,"タンパク質" %><br />
+    <%= f.number_field :protein,class:"w-50"%>
+  </div>
+    <div class="field">
+    <%= f.label :fat,"脂質" %><br />
+    <%= f.number_field :fat,class:"w-50"%>
+  </div>
+    <div class="field">
+    <%= f.label :carbohydrate,"炭水化物" %><br />
+    <%= f.number_field :carbohydrate,class:"w-50"%>
+  </div>
+  <div class="field">
+    <%= f.label :explanation,"説明" %><br />
+    <%= f.text_area :explanation,class:"w-50"%>
+  </div>
+   <%=f.submit '登録',class: "btn btn-sm btn btn-primary"%>
+<% end %>

@@ -1,10 +1,21 @@
-<h1>ユーザー詳細ページ(マイページ)</h1>
-<% if @member == @current_member %>
-<p>マイページ</p>
-<%= @year %>年<%= @month %>月<%= @day %>日(<%= @days[@weekday] %>)
-<p>明日<%= link_to @tomorrow.strftime("%Y/%-m/%-d"),member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day) %></p>
-<p>明日<%= link_to @yesterday.strftime("%Y/%-m/%-d"),member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %></p>
+<h1><%= @year %>年<%= @month %>月<%= @day %>日(<%= @days[@weekday] %>)</h1>
 
+<% if @member == @current_member %>
+<h2>マイページ</h2>
+<p><%= @member.purpose_i18n %></p>
+<p><%= @member.profile %></p>
+<%= link_to "今日",member_path(@member, year: @today.year, month: @today.month, day: @today.day) %>　|
+　<%= link_to "明日",member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day) %>　|
+　<%= link_to "昨日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
+
+<p><%= link_to "New Food",new_food_path %></p>
+<p><%= link_to "Food List",foods_path %></p>
+<h2>食事</h2>
+<p><%= link_to "New Meal",new_meal_path %></p>
+<% @meals.each do |meal| %>
+<p><%= meal.food.name %>(<%= meal.quantity %>)<%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
+<p><%= meal.ymd %>
+<% end %>
 <% else %>
 <%= @member.name %>さんページ
 <% end %>

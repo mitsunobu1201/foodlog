@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>食品名</th>
+      <th>カロリー</th>
+      <th>タンパク質</th>
+      <th>脂質</th>
+      <th>炭水化物</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.calorie %></td>
+        <td><%= food.protein %></td>
+        <td><%= food.fat %></td>
+        <td><%= food.carbohydrate %></td>
+        <td><%= food.explanation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
