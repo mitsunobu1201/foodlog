@@ -8,13 +8,13 @@
     <%= f.label :ymd,"日付" %><br />
     <%= f.date_select :ymd, order: [:year, :month, :day], class: "w-50" %>
   </div>
-   <div class="field">
-      <%= f.label :timeframe,"時間帯" %><br />
-      <%= f.radio_button :timeframe,0,checked: true %>朝食<br />
-      <%= f.radio_button :timeframe,1 %>昼食<br />
-      <%= f.radio_button :timeframe,2 %>夕食<br />
-      <%= f.radio_button :timeframe,3 %>間食<br />
-      </div>
+<div class="field">
+  <%= f.label :timeframe, "時間帯" %><br>
+  <%= f.radio_button :timeframe, 0, checked: params[:timeframe].to_i == 0 %>朝食<br>
+  <%= f.radio_button :timeframe, 1, checked: params[:timeframe].to_i == 1 %>昼食<br>
+  <%= f.radio_button :timeframe, 2, checked: params[:timeframe].to_i == 2 %>夕食<br>
+  <%= f.radio_button :timeframe, 3, checked: params[:timeframe].to_i == 3 %>間食<br>
+</div>
   <div class="field">
     <%= f.select :quantity, [['個数選択',0],['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10]],selected: "1"%>
   </div>

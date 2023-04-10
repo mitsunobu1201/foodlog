@@ -4,18 +4,108 @@
 <h2>マイページ</h2>
 <p><%= @member.purpose_i18n %></p>
 <p><%= @member.profile %></p>
-<%= link_to "今日",member_path(@member, year: @today.year, month: @today.month, day: @today.day) %>　|
-　<%= link_to "明日",member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day) %>　|
+
+
+<%= link_to "明日",member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day) %>　|
+<% if @date == @today %>
+　今日　|
+<% else %>
+　<%= link_to "今日",member_path(@member, year: @today.year, month: @today.month, day: @today.day) %>　|
+<% end %>
 　<%= link_to "昨日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
 
 <p><%= link_to "New Food",new_food_path %></p>
 <p><%= link_to "Food List",foods_path %></p>
-<h2>食事</h2>
-<p><%= link_to "New Meal",new_meal_path %></p>
-<% @meals.each do |meal| %>
+<h1>食事</h1>
+<% @total_calorie, @total_protein, @total_fat, @total_carbohydrate = 0, 0, 0, 0 %>
+<p>総カロリー：<%= @total_calorie %></p>
+<p>総タンパク質：<%= @total_protein %></p>
+<p>総脂質：<%= @total_fat %></p>
+<p>総炭水化物：<%= @total_carbohydrate %></p>
+
+<h2>朝食</h2>
+<% @calorie, @protein, @fat, @carbohydrate = 0, 0, 0, 0 %>
+<% @meals_morning.each do |meal| %>
 <p><%= meal.food.name %>(<%= meal.quantity %>)<%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
-<p><%= meal.ymd %>
+<% @calorie += meal.food.calorie * meal.quantity %>
+<% @protein += meal.food.protein  * meal.quantity %>
+<% @fat += meal.food.fat  * meal.quantity %>
+<% @carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
 <% end %>
+<p><%= link_to "New Meal",new_meal_path(timeframe: 0) %></p>
+
+<p>カロリー：<%= @calorie %></p>
+<p>タンパク質：<%= @protein %></p>
+<p>脂質：<%= @fat %></p>
+<p>炭水化物：<%= @carbohydrate %></p>
+
+<h2>昼食</h2>
+<% @calorie, @protein, @fat, @carbohydrate = 0, 0, 0, 0 %>
+<% @meals_lunch.each do |meal| %>
+<p><%= meal.food.name %>(<%= meal.quantity %>)<%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
+
+<% @calorie += meal.food.calorie * meal.quantity %>
+<% @protein += meal.food.protein  * meal.quantity %>
+<% @fat += meal.food.fat  * meal.quantity %>
+<% @carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+<p><%= link_to "New Meal",new_meal_path(timeframe: 1) %></p>
+
+<p>カロリー：<%= @calorie %></p>
+<p>タンパク質：<%= @protein %></p>
+<p>脂質：<%= @fat %></p>
+<p>炭水化物：<%= @carbohydrate %></p>
+
+
+<h2>夕食</h2>
+<% @calorie, @protein, @fat, @carbohydrate = 0, 0, 0, 0 %>
+<% @meals_dinner.each do |meal| %>
+<p><%= meal.food.name %>(<%= meal.quantity %>)<%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
+
+<% @calorie += meal.food.calorie * meal.quantity %>
+<% @protein += meal.food.protein  * meal.quantity %>
+<% @fat += meal.food.fat  * meal.quantity %>
+<% @carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+<p><%= link_to "New Meal",new_meal_path(timeframe: 2) %></p>
+
+<p>カロリー：<%= @calorie %></p>
+<p>タンパク質：<%= @protein %></p>
+<p>脂質：<%= @fat %></p>
+<p>炭水化物：<%= @carbohydrate %></p>
+
+<h2>間食</h2>
+<% @calorie, @protein, @fat, @carbohydrate = 0, 0, 0, 0 %>
+<% @meals_snack.each do |meal| %>
+<p><%= meal.food.name %>(<%= meal.quantity %>)<%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
+
+<% @calorie += meal.food.calorie * meal.quantity %>
+<% @protein += meal.food.protein  * meal.quantity %>
+<% @fat += meal.food.fat  * meal.quantity %>
+<% @carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+<p><%= link_to "New Meal",new_meal_path(timeframe: 3) %></p>
+
+<p>カロリー：<%= @calorie %></p>
+<p>タンパク質：<%= @protein %></p>
+<p>脂質：<%= @fat %></p>
+<p>炭水化物：<%= @carbohydrate %></p>
 <% else %>
 <%= @member.name %>さんページ
 <% end %>

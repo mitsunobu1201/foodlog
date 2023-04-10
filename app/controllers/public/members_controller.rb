@@ -6,7 +6,7 @@ class Public::MembersController < ApplicationController
   def show
     @member = User.find(params[:member])
     @current_member = current_user
-    @meals = Meal.all
+
 
     #パラメーターから日付を取得し、日付と曜日を表示する
     @year = params[:year].to_i
@@ -24,5 +24,11 @@ class Public::MembersController < ApplicationController
 
     #今日の日付取得
     @today = Time.zone.today
+
+    #パラメーターの日付からその日のカラムのみ取得
+    @meals_morning= Meal.where(ymd: @date,timeframe: 0) #朝食
+    @meals_lunch = Meal.where(ymd: @date,timeframe: 1) #昼食
+    @meals_dinner = Meal.where(ymd: @date,timeframe: 2) #夕食
+    @meals_snack = Meal.where(ymd: @date,timeframe: 3) #間食
   end
 end
