@@ -1,0 +1,17 @@
+<% @calorie, @protein, @fat, @carbohydrate = 0, 0, 0, 0 %>
+
+<% meals.each do |meal| %>
+<p><%= meal.food.name %>(<%= meal.quantity %>)<%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
+<% @calorie += meal.food.calorie * meal.quantity %>
+<% @protein += meal.food.protein  * meal.quantity %>
+<% @fat += meal.food.fat  * meal.quantity %>
+<% @carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+<p><%= link_to "New Meal",new_meal_path(timeframe: 0) %></p>
+
+<h3>栄養素</h3>
+
+<p>カロリー：<%= @calorie %></p>
+<p>タンパク質：<%= @protein %></p>
+<p>脂質：<%= @fat %></p>
+<p>炭水化物：<%= @carbohydrate %></p>

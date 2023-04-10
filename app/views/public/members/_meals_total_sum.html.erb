@@ -1,0 +1,29 @@
+<% @total_calorie, @total_protein, @total_fat, @total_carbohydrate = 0, 0, 0, 0 %>
+
+<% meals_morning.each do |meal| %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+
+<% meals_lunch.each do |meal| %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+
+<% meals_lunch.each do |meal| %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
+
+<% meals_snack.each do |meal| %>
+<% @total_calorie += meal.food.calorie * meal.quantity %>
+<% @total_protein += meal.food.protein  * meal.quantity %>
+<% @total_fat += meal.food.fat  * meal.quantity %>
+<% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
+<% end %>
