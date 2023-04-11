@@ -29,41 +29,64 @@
 </div>
   <div class="col-md-1">
     </div>
-  <div class="col-md-7">
+  <div class="col-md-3">
 <h2>本日の栄養状態</h2>
 <%= render 'meals_total_sum', meals_morning: @meals_morning,meals_lunch: @meals_lunch,meals_dinner: @meals_dinner,meals_snack: @meals_snack %>
-<p>総カロリー：<%= @total_calorie %></p>
-<p>総タンパク質：<%= @total_protein %></p>
-<p>総脂質：<%= @total_fat %></p>
-<p>総炭水化物：<%= @total_carbohydrate %></p>
+<p>総カロリー：<%= @total_calorie %>kcal</p>
+<p>総タンパク質：<%= @total_protein %>g</p>
+<p>総脂質：<%= @total_fat %>g</p>
+<p>総炭水化物：<%= @total_carbohydrate %>g</p>
+      </div>
+  <div class="col-md-4">
+  <div>
+<%= pie_chart @chart%>
+</div>
       </div>
 </div>
 
 
-<h1>食事</h1>
+<h2>食事</h2>
 
 <div class="row">
   <div class="col-md-3 border">
-<h3>朝食</h3>
+<h3 class="pt-3 pb-3">朝食</h3>
 <%= render 'meals', meals: @meals_morning, timeframe:@timeframe=0 %>
 </div>
 
 
   <div class="col-md-3 border">
-<h3>昼食</h3>
+<h3 class="pt-3 pb-3">昼食</h3>
 <%= render 'meals', meals: @meals_lunch, timeframe:@timeframe=1 %>
 </div>
 
 
   <div class="col-md-3 border">
-<h3>夕食</h3>
+<h3 class="pt-3 pb-3">夕食</h3>
 <%= render 'meals', meals: @meals_dinner, timeframe:@timeframe=2 %>
 </div>
 
   <div class="col-md-3 border">
-<h3>間食</h3>
+<h3 class="pt-3 pb-3">間食</h3>
 <%= render 'meals', meals: @meals_snack, timeframe:@timeframe=3 %>
 </div>
+</div>
+
+
+<div class="border-bottom mt-5"><h2>コメント</h2></div>
+<div>
+<div class="row">
+  <div class="col-md-3">
+<%= render 'public/comments/comments', comments: @comments_morning, timeframe:@timeframe=0,date:@date,member:@member.id %>
+    </div>
+  <div class="col-md-3">
+<%= render 'public/comments/comments', comments: @comments_lunch, timeframe:@timeframe=1,date:@date,member:@member.id %>
+    </div>
+  <div class="col-md-3">
+<%= render 'public/comments/comments', comments: @comments_dinner, timeframe:@timeframe=2,date:@date,member:@member.id %>
+    </div>
+  <div class="col-md-3">
+<%= render 'public/comments/comments', comments: @comments_snack, timeframe:@timeframe=3,date:@date,member:@member.id %>
+    </div>
 </div>
 
 

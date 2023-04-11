@@ -30,5 +30,13 @@ class Public::MembersController < ApplicationController
     @meals_lunch = Meal.where(ymd: @date,timeframe: 1) #昼食
     @meals_dinner = Meal.where(ymd: @date,timeframe: 2) #夕食
     @meals_snack = Meal.where(ymd: @date,timeframe: 3) #間食
+
+    #コメント機能
+    @comment = Comment.new
+    @comments_morning = Comment.where(ymd: @date,timeframe: 0) #朝食コメント
+    @comments_lunch = Comment.where(ymd: @date,timeframe: 1) #昼食コメント
+    @comments_dinner = Comment.where(ymd: @date,timeframe: 2) #夕食コメント
+    @comments_snack = Comment.where(ymd: @date,timeframe: 3) #間食コメント
+
   end
 end

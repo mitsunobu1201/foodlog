@@ -14,7 +14,7 @@
 <% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
 <% end %>
 
-<% meals_lunch.each do |meal| %>
+<% meals_dinner.each do |meal| %>
 <% @total_calorie += meal.food.calorie * meal.quantity %>
 <% @total_protein += meal.food.protein  * meal.quantity %>
 <% @total_fat += meal.food.fat  * meal.quantity %>
@@ -27,3 +27,5 @@
 <% @total_fat += meal.food.fat  * meal.quantity %>
 <% @total_carbohydrate += meal.food.carbohydrate  * meal.quantity %>
 <% end %>
+
+<% @chart = [['タンパク質', @total_protein], ['脂質', @total_fat],['炭水化物',@total_carbohydrate]] %>

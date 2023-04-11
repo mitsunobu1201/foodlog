@@ -10,15 +10,56 @@
 <% if meals.empty? %>
   <p>まだ記録をしていない様です。</p>
 <% else %>
+
   <h5>栄養素</h5>
-  <p>カロリー：<%= @calorie %></p>
-  <p>タンパク質：<%= @protein %></p>
-  <p>脂質：<%= @fat %></p>
-  <p>炭水化物：<%= @carbohydrate %></p>
+  <table class="table-borderless w-75 mb-5">
+    <tr>
+      <td>
+        カロリー：
+      </td>
+      <td>
+        <%= @calorie %>kcal
+      </td>
+    </tr>
+     <tr>
+      <td>
+        タンパク質：
+      </td>
+      <td>
+        <%= @protein %>g
+      </td>
+    </tr>
+         <tr>
+      <td>
+        脂質：
+      </td>
+      <td>
+        <%= @fat %>g
+      </td>
+    </tr>
+         <tr>
+      <td>
+        炭水化物：
+      </td>
+      <td>
+        <%= @carbohydrate %>g
+      </td>
+    </tr>
+  </table>
 <% end %>
 
+<table class="table-borderless w-75 mb-5">
 <% meals.each do |meal| %>
-<p><%= meal.food.name %>(<%= meal.quantity %>)<%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
+
+    <tr>
+      <td>
+        <%= meal.food.name %>(<%= meal.quantity %>)
+      </td>
+      <td>
+        <%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %>
+      </td>
+      </tr>
 <% end %>
+</table>
 <p><%= link_to "New Meal",new_meal_path(timeframe: @timeframe) %></p>
 
