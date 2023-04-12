@@ -1,0 +1,6 @@
+<h1><%= @member.name %>さんページ</h1>
+<% @user_dates.each do |user_date| %>
+  <% date = user_date.ymd %>
+  <%= link_to "#{date.year}年#{date.month}月#{date.day}日", member_path(@member, year: date.year, month: date.month, day: date.day) %>
+  <br>
+<% end %>

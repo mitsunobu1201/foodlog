@@ -12,7 +12,7 @@
 　<%= link_to "前の日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
 </div>
   <div class="col-md-1 text-center">
-    <%= link_to "日付一覧",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
+    <%= link_to "日付一覧",date_path(@member) %>
 </div>
   <div class="col-md-4 text-center">
     <%= link_to "New Food",new_food_path %>　|
@@ -36,7 +36,7 @@
   <div class="col-md-1">
     </div>
   <div class="col-md-3">
-<h2>本日の栄養状態</h2>
+<h2>総合栄養情報</h2>
 <%= render 'meals_total_sum', meals_morning: @meals_morning,meals_lunch: @meals_lunch,meals_dinner: @meals_dinner,meals_snack: @meals_snack %>
 <p>総カロリー：<%= @total_calorie %>kcal</p>
 <p>総タンパク質：<%= @total_protein %>g</p>

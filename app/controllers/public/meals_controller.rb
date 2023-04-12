@@ -3,6 +3,7 @@ class Public::MealsController < ApplicationController
   def new
     @newmeal = Meal.new
     @foods = Food.all
+    @selected_date = params[:date].to_date
   end
 
 

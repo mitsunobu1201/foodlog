@@ -6,7 +6,8 @@
   </div>
     <div class="field">
     <%= f.label :ymd,"日付" %><br />
-    <%= f.date_select :ymd, order: [:year, :month, :day], class: "w-50" %>
+    <%= f.date_select :ymd, order: [:year, :month, :day], class: "w-50",selected: @selected_date %>
+
   </div>
 <div class="field">
   <%= f.label :timeframe, "時間帯" %><br>

@@ -23,6 +23,7 @@ scope module: 'public' do
   resources :meals, only: [:new,:create,:destroy]
   resources :foods, only: [:index,:new,:create,:destroy]
   resources :comments, only: [:create,:destroy]
+  resources :dates, only: [:show]
   resource :nices, only: [:create,:destroy]
 end
 
