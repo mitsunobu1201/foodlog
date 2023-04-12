@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
    <div class="col-8 m-0 mb-3">
-<h3 class="mb-5">食品登録</h3>
-<%= form_with model:@food,url: foods_path,local: true do |f| %>
+<h3 class="mb-5">食品編集</h3>
+<%= form_with model:@food,url: food_path(@food.id),local: true do |f| %>
      <div class="mb-3">
     <%= f.label :name,"食品名" %><br />
     <%= f.text_field :name,class:"form-control",placeholder:"例：バナナ"%>
@@ -26,7 +26,7 @@
     <%= f.label :explanation,"説明" %><br />
     <%= f.text_area :explanation,class:"form-control",placeholder:"食品の説明を入力してください。"%>
   </div>
-   <%=f.submit '登録',class: "btn btn-sm btn btn-primary"%>
+   <%=f.submit '編集',class: "btn btn-sm btn btn-success"%>
 <% end %>
   </div>
     </div>

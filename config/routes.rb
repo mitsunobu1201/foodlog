@@ -21,7 +21,7 @@ get "about" => "public/homes#about", as: "about"
 scope module: 'public' do
   resources :members, only: [:index]
   resources :meals, only: [:new,:create,:destroy]
-  resources :foods, only: [:index,:new,:create,:destroy]
+  resources :foods, only: [:index,:new,:create,:edit,:update,:destroy]
   resources :comments, only: [:create,:destroy]
   resources :dates, only: [:show]
   resources :nices, only: [:index,:create,:destroy]
