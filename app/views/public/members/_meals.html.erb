@@ -55,9 +55,11 @@
       <td>
         <%= meal.food.name %>(<%= meal.quantity %>)
       </td>
+      <% if @member == @current_member %>
       <td>
         <%= link_to "削除", meal_path(meal),data:{ "turbo-method": :delete },class:"btn btn-danger" %>
       </td>
+      <% end %>
       </tr>
 <% end %>
 </table>

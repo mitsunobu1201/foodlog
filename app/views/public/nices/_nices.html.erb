@@ -1,0 +1,11 @@
+<% if nices.exists?(nice_user_id:current_user.id) %>
+<%= link_to nices_path(params: { ymd: @date,timeframe:@timeframe ,user_id: @member.id}), data: { "turbo-method": :delete } do %>
+  ♥(<%= nices.count %>いいね！)
+  <% end %>
+<% else %>
+
+<%= link_to nices_path(params: { ymd: @date,timeframe:@timeframe ,user_id: @member.id}), data: { "turbo-method": :post } do %>
+  ♡(<%= nices.count %>いいね！)
+<% end %>
+
+<% end %>

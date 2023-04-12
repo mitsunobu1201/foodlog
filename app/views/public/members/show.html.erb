@@ -2,16 +2,16 @@
   <div class="col-md-4">
 <h2><%= @year %>年<%= @month %>月<%= @day %>日(<%= @days[@weekday] %>)</h2>
   </div>
-  <div class="col-md-2 text-center">
-    <%= link_to "明日",member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day) %>　|
+  <div class="col-md-3 text-center">
+    <%= link_to "次の日",member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day) %>　|
 <% if @date == @today %>
 　今日　|
 <% else %>
 　<%= link_to "今日",member_path(@member, year: @today.year, month: @today.month, day: @today.day) %>　|
 <% end %>
-　<%= link_to "昨日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
+　<%= link_to "前の日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
 </div>
-  <div class="col-md-2 text-center">
+  <div class="col-md-1 text-center">
     <%= link_to "日付一覧",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
 </div>
   <div class="col-md-4 text-center">
@@ -20,10 +20,16 @@
 </div>
 </div>
 
-<% if @member == @current_member %>
+
 <div class="row pb-5r pb-5">
   <div class="col-md-4">
+
+<% if @member == @current_member %>
 <h2>マイページ</h2>
+<% else %>
+<h2><%= @member.name %>さんページ</h2>
+<% end %>
+
 <p>目的：<%= @member.purpose_i18n %></p>
 <p><%= @member.profile %></p>
 </div>
@@ -49,24 +55,41 @@
 
 <div class="row">
   <div class="col-md-3 border">
-<h3 class="pt-3 pb-3">朝食</h3>
+<div>
+  <h3 class="pt-3 pb-3" style="display: inline-block;">朝食</h3>
+  <%= render 'public/nices/nices', nices: @nices_morning, timeframe:@timeframe=0,date:@date,member:@member.id %>
+</div>
+
 <%= render 'meals', meals: @meals_morning, timeframe:@timeframe=0 %>
 </div>
 
 
   <div class="col-md-3 border">
-<h3 class="pt-3 pb-3">昼食</h3>
+<div>
+  <h3 class="pt-3 pb-3" style="display: inline-block;">昼食</h3>
+<%= render 'public/nices/nices', nices: @nices_lunch, timeframe:@timeframe=1,date:@date,member:@member.id %>
+
+
+
+
+</div>
 <%= render 'meals', meals: @meals_lunch, timeframe:@timeframe=1 %>
 </div>
 
 
   <div class="col-md-3 border">
-<h3 class="pt-3 pb-3">夕食</h3>
+<div>
+  <h3 class="pt-3 pb-3" style="display: inline-block;">夕食</h3>
+<%= render 'public/nices/nices', nices: @nices_dinner, timeframe:@timeframe=2,date:@date,member:@member.id %>
+</div>
 <%= render 'meals', meals: @meals_dinner, timeframe:@timeframe=2 %>
 </div>
 
   <div class="col-md-3 border">
-<h3 class="pt-3 pb-3">間食</h3>
+<div>
+  <h3 class="pt-3 pb-3" style="display: inline-block;">間食</h3>
+<%= render 'public/nices/nices', nices: @nices_snack, timeframe:@timeframe=3,date:@date,member:@member.id %>
+</div>
 <%= render 'meals', meals: @meals_snack, timeframe:@timeframe=3 %>
 </div>
 </div>
@@ -88,8 +111,3 @@
 <%= render 'public/comments/comments', comments: @comments_snack, timeframe:@timeframe=3,date:@date,member:@member.id %>
     </div>
 </div>
-
-
-<% else %>
-<%= @member.name %>さんページ
-<% end %>

@@ -1,11 +1,13 @@
   <% comments.each do |comment| %>
-  <div>
-  <p><%= comment.user.name %>さん　<%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
-  <p><%= comment.comment %><%= link_to "削除", comment_path(comment),data:{ "turbo-method": :delete },class:"btn btn-danger" %></p>
+  <div class="border-top border-bottom">
+  <p><%= comment.user.name %>さん　<%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></p>
+  <p><%= comment.comment %><br>
+  <% if current_user.id == comment.comment_user_id %>
+  <%= link_to "削除", comment_path(comment),data:{ "turbo-method": :delete } %>
+  </p>
+  <% end %>
   </div>
   <% end %>
-
-
 
   <%= form_with model:@comment,local:false do |f| %>
   <%= f.hidden_field :ymd , value: date %>
@@ -19,4 +21,4 @@
     <div class="form-group">
       <%= f.submit '送信'%>
     </div>
-      <% end %>
+  <% end %>

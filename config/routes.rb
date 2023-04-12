@@ -23,7 +23,7 @@ scope module: 'public' do
   resources :meals, only: [:new,:create,:destroy]
   resources :foods, only: [:index,:new,:create,:destroy]
   resources :comments, only: [:create,:destroy]
-  resources :nices, only: [:create,:destroy]
+  resource :nices, only: [:create,:destroy]
 end
 
 get 'member/:member/:year/:month/:day' => 'public/members#show',as: "member"
