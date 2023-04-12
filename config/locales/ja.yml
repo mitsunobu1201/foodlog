@@ -12,3 +12,10 @@ ja:
         diet: ダイエット
         health: 健康維持
         etc: その他
+
+    nice:
+      timeframe:
+        morning: 朝食
+        lunch: 朝食
+        dinner: 夕食
+        snack: 間食

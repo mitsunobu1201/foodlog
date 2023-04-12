@@ -1,5 +1,9 @@
 class Public::NicesController < ApplicationController
 
+  def index
+   @nices = Nice.where(nice_user_id: current_user.id)
+  end
+
   def create
     @nice = Nice.new(nice_params)
     if @nice.save

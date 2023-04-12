@@ -1,16 +1,19 @@
-<table>
-  <thead>
-    <tr>
+  <h2 class="mt-3">食品一覧</h2>
+  <div class="row">
+    <div class="col-md-12 mx-auto mt-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
       <th>食品名</th>
-      <th>カロリー</th>
-      <th>タンパク質</th>
-      <th>脂質</th>
-      <th>炭水化物</th>
+      <th>カロリー(kcal)</th>
+      <th>タンパク質(g)</th>
+      <th>脂質(g)</th>
+      <th>炭水化物(g)</th>
       <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @foods.each do |food| %>
+          </tr>
+      </thead>
+        <tbody>
+              <% @foods.each do |food| %>
       <tr>
         <td><%= food.name %></td>
         <td><%= food.calorie %></td>
@@ -19,6 +22,7 @@
         <td><%= food.carbohydrate %></td>
         <td><%= food.explanation %></td>
       </tr>
-    <% end %>
+      <% end %>
   </tbody>
 </table>
+<table>

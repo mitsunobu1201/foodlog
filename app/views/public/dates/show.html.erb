@@ -1,6 +1,29 @@
-<h1><%= @member.name %>さんページ</h1>
+  <h2 class="mt-3"><%= @member.name %>さん</h2>
+  <div class="row">
+    <div class="col-md-4 mx-auto mt-3">
+      <table class="table table-striped text-center">
+        <thead>
+
+<% if @user_dates.empty? %>
+          <tr>
+            <th>食事の記録がありません。</th>
+          </tr>
+        <tbody>
+        </tbody>
+<% else %>
+          <tr>
+            <th>食事投稿一覧</th>
+          </tr>
+        <tbody>
+        </tbody>
 <% @user_dates.each do |user_date| %>
+<tr>
   <% date = user_date.ymd %>
-  <%= link_to "#{date.year}年#{date.month}月#{date.day}日", member_path(@member, year: date.year, month: date.month, day: date.day) %>
-  <br>
+  <td><%= link_to "#{date.year}年#{date.month}月#{date.day}日", member_path(@member, year: date.year, month: date.month, day: date.day) %></td>
+</tr>
 <% end %>
+<% end %>
+
+</tbody>
+        </thead>
+      </table>

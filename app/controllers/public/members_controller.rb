@@ -39,9 +39,9 @@ class Public::MembersController < ApplicationController
     @comments_snack = Comment.where(ymd: @date,timeframe: 3,user_id:@member) #間食コメント
 
     #いいね機能
-    @nices_morning = Nice.where(ymd: @date,timeframe: 0,user_id:@member) #朝食いいね
-    @nices_lunch = Nice.where(ymd: @date,timeframe: 1,user_id:@member) #昼食いいね
-    @nices_dinner = Nice.where(ymd: @date,timeframe: 2,user_id:@member) #夕食いいね
-    @nices_snack = Nice.where(ymd: @date,timeframe: 3,user_id:@member) #間食いいね
+    @nices_morning = Nice.where(ymd: @date,timeframe: "morning",user_id:@member) #朝食いいね
+    @nices_lunch = Nice.where(ymd: @date,timeframe: "lunch",user_id:@member) #昼食いいね
+    @nices_dinner = Nice.where(ymd: @date,timeframe: "dinner",user_id:@member) #夕食いいね
+    @nices_snack = Nice.where(ymd: @date,timeframe: "snack",user_id:@member) #間食いいね
   end
 end

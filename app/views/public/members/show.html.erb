@@ -32,6 +32,8 @@
 
 <p>目的：<%= @member.purpose_i18n %></p>
 <p><%= @member.profile %></p>
+<p><%= link_to "いいね！した投稿", nices_path %></p>
+<p><%= link_to "プロフィール編集", nices_path %></p>
 </div>
   <div class="col-md-1">
     </div>
@@ -57,7 +59,7 @@
   <div class="col-md-3 border">
 <div>
   <h3 class="pt-3 pb-3" style="display: inline-block;">朝食</h3>
-  <%= render 'public/nices/nices', nices: @nices_morning, timeframe:@timeframe=0,date:@date,member:@member.id %>
+  <%= render 'public/nices/nices', nices: @nices_morning, timeframe:@timeframe="morning",date:@date,member:@member.id %>
 </div>
 
 <%= render 'meals', meals: @meals_morning, timeframe:@timeframe=0 %>
@@ -67,7 +69,7 @@
   <div class="col-md-3 border">
 <div>
   <h3 class="pt-3 pb-3" style="display: inline-block;">昼食</h3>
-<%= render 'public/nices/nices', nices: @nices_lunch, timeframe:@timeframe=1,date:@date,member:@member.id %>
+<%= render 'public/nices/nices', nices: @nices_lunch, timeframe:@timeframe="lunch",date:@date,member:@member.id %>
 
 
 
@@ -80,7 +82,7 @@
   <div class="col-md-3 border">
 <div>
   <h3 class="pt-3 pb-3" style="display: inline-block;">夕食</h3>
-<%= render 'public/nices/nices', nices: @nices_dinner, timeframe:@timeframe=2,date:@date,member:@member.id %>
+<%= render 'public/nices/nices', nices: @nices_dinner, timeframe:@timeframe="dinner",date:@date,member:@member.id %>
 </div>
 <%= render 'meals', meals: @meals_dinner, timeframe:@timeframe=2 %>
 </div>
@@ -88,7 +90,7 @@
   <div class="col-md-3 border">
 <div>
   <h3 class="pt-3 pb-3" style="display: inline-block;">間食</h3>
-<%= render 'public/nices/nices', nices: @nices_snack, timeframe:@timeframe=3,date:@date,member:@member.id %>
+<%= render 'public/nices/nices', nices: @nices_snack, timeframe:@timeframe="snack",date:@date,member:@member.id %>
 </div>
 <%= render 'meals', meals: @meals_snack, timeframe:@timeframe=3 %>
 </div>

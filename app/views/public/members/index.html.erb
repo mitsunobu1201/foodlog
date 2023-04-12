@@ -1,8 +1,22 @@
-<h1>
-  ユーザー　一覧ページ
-</h1>
+  <h2 class="mt-3">会員一覧</h2>
+  <div class="row">
+    <div class="col-md-12 mx-auto mt-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+      <th>ニックネーム</th>
+      <th>目的</th>
+      <th>プロフィール</th>
+          </tr>
+      </thead>
+        <tbody>
 <% @members.each do |member| %>
-<h6><%= link_to member.name, member_path(member: member.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"pb-2" %></h6>
-<p>プロフィール：<%= member.profile %></p>
-<p>目的：<%= member.purpose_i18n %></p>
+<tr>
+<td><%= link_to member.name, member_path(member: member.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"pb-2" %></td>
+<td><%= member.purpose_i18n %></td>
+<td><%= member.profile %></td>
+</tr>
 <% end %>
+</tbody>
+        </thead>
+      </table>
