@@ -12,7 +12,7 @@
         <tbody>
 <% @members.each do |member| %>
 <tr>
-<td><%= link_to member.name, member_path(member: member.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"pb-2" %></td>
+<td><%= link_to member.name, member_path(member, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"pb-2" %></td>
 <td><%= member.purpose_i18n %></td>
 <td><%= member.profile %></td>
 </tr>

@@ -22,7 +22,7 @@
               <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
             </li>
             <li class="m-3">
-              <%= link_to "MyPage", member_path(member: current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day), class: 'nav-link text-dark border border-secondary rounded' %>
+              <%= link_to "MyPage", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day), class: 'nav-link text-dark border border-secondary rounded' %>
             </li>
             <li class="m-3">
               <%= link_to "Users", members_path, class: 'nav-link text-dark border border-secondary rounded' %>

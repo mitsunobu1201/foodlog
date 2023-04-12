@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
    <div class="col-8 m-0 mb-3">
 <h3 class="mb-5">食品登録</h3>
-<%= form_with model:@food,url: foods_path,local: true do |f| %>
+<%= form_with model:@newfood,url: foods_path,local: true do |f| %>
      <div class="mb-3">
     <%= f.label :name,"食品名" %><br />
     <%= f.text_field :name,class:"form-control",placeholder:"例：バナナ"%>

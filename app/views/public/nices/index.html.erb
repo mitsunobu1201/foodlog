@@ -3,6 +3,13 @@
     <div class="col-md-10 mx-auto mt-3">
       <table class="table table-striped">
         <thead>
+          <% if @nices.empty? %>
+          <tr>
+            <th>まだいいねしていません。</th>
+          </tr>
+        <tbody>
+        </tbody>
+<% else %>
           <tr>
             <th>ニックネーム</th>
             <th>日付</th>
@@ -17,6 +24,7 @@
             <td><%= nice.timeframe_i18n %></td>
             </tr>
           <% end %>
+                    <% end %>
         </tbody>
         </thead>
       </table>

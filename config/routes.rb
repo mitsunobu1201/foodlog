@@ -19,7 +19,7 @@ root :to => "public/homes#top"
 get "about" => "public/homes#about", as: "about"
 
 scope module: 'public' do
-  resources :members, only: [:index]
+  resources :members, only: [:index,:show,:edit,:update]
   resources :meals, only: [:new,:create,:destroy]
   resources :foods, only: [:index,:new,:create,:edit,:update,:destroy]
   resources :comments, only: [:create,:destroy]
@@ -27,7 +27,7 @@ scope module: 'public' do
   resources :nices, only: [:index,:create,:destroy]
 end
 
-get 'member/:member/:year/:month/:day' => 'public/members#show',as: "member"
+
 
 
 end

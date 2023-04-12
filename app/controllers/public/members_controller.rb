@@ -4,7 +4,7 @@ class Public::MembersController < ApplicationController
   end
 
   def show
-    @member = User.find(params[:member])
+    @member = User.find(params[:id])
     @current_member = current_user
 
 
@@ -44,4 +44,24 @@ class Public::MembersController < ApplicationController
     @nices_dinner = Nice.where(ymd: @date,timeframe: "dinner",user_id:@member) #夕食いいね
     @nices_snack = Nice.where(ymd: @date,timeframe: "snack",user_id:@member) #間食いいね
   end
+
+  def edit
+    @member= User.find(params[:id])
+  end
+
+  def update
+   @member = User.find(params[:id])
+   if @member.update(member_params)
+   redirect_to root_path
+   else
+   render "index"
+   end
+  end
+
+  private
+
+  def member_params
+    params.permit(:user, keys: [ :height, :weight, :purpose, :profile])
+  end
+
 end

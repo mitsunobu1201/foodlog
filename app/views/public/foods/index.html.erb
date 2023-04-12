@@ -3,6 +3,13 @@
     <div class="col-md-12 mx-auto mt-3">
       <table class="table table-striped">
         <thead>
+<% if @foods.empty? %>
+          <tr>
+            <th>また食品の登録がありません。<%= link_to "こちらから",new_food_path %>から登録してください。</th>
+          </tr>
+        <tbody>
+        </tbody>
+<% else %>
           <tr>
       <th>食品名</th>
       <th>カロリー(kcal)</th>
@@ -23,9 +30,11 @@
         <td><%= food.carbohydrate %></td>
         <td><%= food.explanation %></td>
 
-        <td><%= link_to "削除", food_path(food.id), data: { "turbo-method": :delete },class:"btn btn-danger" %></td>
+
+       <td><%= link_to "削除", food_path(food.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？\r\n削除すると今まで登録していた「#{h(food.name)}」に関する食事内容がすべて削除されます。"},class: "btn btn-danger" %></td>
       </tr>
       <% end %>
+            <% end %>
   </tbody>
 </table>
 <table>
