@@ -32,8 +32,11 @@
 
 <p>目的：<%= @member.purpose_i18n %></p>
 <p><%= @member.profile %></p>
+<% if @member == @current_member %>
 <p><%= link_to "いいね！した投稿", nices_path %></p>
+
 <p><%= link_to "プロフィール編集", edit_member_path(@member) %></p>
+<% end %>
 </div>
   <div class="col-md-1">
     </div>
