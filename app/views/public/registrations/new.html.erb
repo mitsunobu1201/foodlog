@@ -1,61 +1,57 @@
-<h2>Sign up</h2>
+  <div class="row align-items-center text-center" style="margin-top:50px">
+  <div class="col-md-12 mb-2">
+    <h4 class="mb-4">新規登録</h4>
+  </div>
+  </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_with model:@user, url: registration_path(resource_name) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row align-items-center">
+  <div class="col-md-4 mx-auto">
+  <div class="field pt-2 pb-2">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"メールアドレス" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field pt-2 pb-2">
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password",class:"form-control pt-2 pb-2",placeholder:"パスワード(6桁以上)" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field pt-2 pb-2">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control pt-2 pb-2",placeholder:"パスワード確認(6桁以上)" %>
   </div>
 
-  <div class="field">
-    <%= f.label :name,"ニックネーム" %><br />
-    <%= f.text_field :name,class:"w-50"%>
+  <div class="field pt-2 pb-2">
+    <%= f.text_field :name,class:"form-control pt-2 pb-2",placeholder:"ニックネーム"%>
   </div>
 
-  <div class="field">
-    <%= f.label :height,"身長" %><br />
-    <%= f.number_field :height,min:1,max:300,class:"w-50"%>
+  <div class="field pt-2 pb-2">
+    <%= f.number_field :height,min:1,max:300,class:"form-control pt-2 pb-2",placeholder:"身長(cm)"%>
   </div>
 
-    <div class="field">
-    <%= f.label :weight,"体重" %><br />
-    <%= f.number_field :weight,min:1,max:300,class:"w-50"%>
+    <div class="field pt-2 pb-2">
+    <%= f.number_field :weight,min:1,max:300,class:"form-control pt-2 pb-2",placeholder:"体重(kg)"%>
   </div>
 
-    <div class="field">
-      <%= f.label :purpose,"目的" %><br />
-      <%= f.radio_button :purpose,"training" %>筋力トレーニング<br />
-      <%= f.radio_button :purpose,"diet" %>ダイエット<br />
-      <%= f.radio_button :purpose,"health" %>健康維持<br />
-      <%= f.radio_button :purpose,"etc" %>その他<br />
+    <div class="field pt-2 pb-4">
+    <%= f.text_area :profile,class:"form-control pt-2 pb-2",placeholder:"プロフィール"%>
+  </div>
+        <p style="font-size:20px">目的</p>
+    <div class="field pb-2 form-check">
+
+      <%= f.radio_button :purpose,"training",class:"form-check-input" %>筋力トレーニング<br>
+      <%= f.radio_button :purpose,"diet" ,class:"form-check-input"%>ダイエット<br>
+      <%= f.radio_button :purpose,"health" ,class:"form-check-input"%>健康維持<br>
+      <%= f.radio_button :purpose,"etc",class:"form-check-input" %>その他<br>
       </div>
 
-    <div class="field">
-    <%= f.label :profile,"プロフィール" %><br />
-    <%= f.text_area :profile,class:"w-50"%>
+
+  <div class="actions pt-2 pb-2">
+    <%= f.submit "登録" ,class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>
   </div>
-
-
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
   </div>
-
+  </div>
 
 <% end %>
-
-<%= render "public/shared/links" %>
