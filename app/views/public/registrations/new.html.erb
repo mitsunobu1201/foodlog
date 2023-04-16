@@ -5,7 +5,6 @@
   </div>
 
   <%= form_with model:@user, url: registration_path(resource_name) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="row align-items-center">
   <div class="col-md-4 mx-auto">
@@ -50,6 +49,12 @@
 
   <div class="actions pt-2 pb-2">
     <%= f.submit "登録" ,class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>
+    </div>
+        <div class="field pt-2 pb-2 text-danger">
+    <% if @user.errors.any? %>
+      <p>フォームが正しく入力されていません。</p>
+      <p>再度入力してください。</p>
+    <% end %>
   </div>
   </div>
   </div>

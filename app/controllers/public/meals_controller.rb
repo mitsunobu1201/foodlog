@@ -16,7 +16,7 @@ class Public::MealsController < ApplicationController
       year = @meal.ymd.strftime('%Y')
       month = @meal.ymd.strftime('%-m')
       day = @meal.ymd.strftime('%-d')
-      redirect_to member_path(member: @meal.user_id, year: year, month: month, day: day)
+      redirect_to member_path(id: @meal.user_id, member: @meal.user_id, year: year, month: month, day: day)
     else
       render 'new'
     end

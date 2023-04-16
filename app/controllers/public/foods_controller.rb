@@ -15,7 +15,7 @@ class Public::FoodsController < ApplicationController
     if @food.save
     redirect_to foods_path
     else
-    redirect_to new_food_path
+    render :new
     end
 
   end
@@ -31,7 +31,7 @@ class Public::FoodsController < ApplicationController
    if @food.update(food_params)
    redirect_to foods_path
    else
-   render "index"
+   render :edit
    end
   end
 

@@ -1,15 +1,12 @@
-  <h2 class="mt-3">いいね！した投稿</h2></h2>
+  <h2 class="mt-3">いいね！した投稿</h2>
+            <% if @nices.empty? %>
+              <h3>まだいいね！していません。</h3>
+<% else %>
   <div class="row">
     <div class="col-md-10 mx-auto mt-3">
       <table class="table table-striped">
         <thead>
-          <% if @nices.empty? %>
-          <tr>
-            <th>まだいいねしていません。</th>
-          </tr>
-        <tbody>
-        </tbody>
-<% else %>
+
           <tr>
             <th>ニックネーム</th>
             <th>日付</th>
