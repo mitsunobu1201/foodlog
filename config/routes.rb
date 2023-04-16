@@ -31,6 +31,7 @@ scope module: 'public' do
   resources :comments, only: [:create,:destroy]
   resources :dates, only: [:show]
   resources :nices, only: [:index,:create,:destroy]
+  get "search" => "searches#index"
 end
 
 namespace :admin do
@@ -39,6 +40,7 @@ namespace :admin do
   resources :foods, only: [:index,:show,:update,:destroy]
   resources :comments, only: [:index,:show,:destroy]
   resources :nices, only: [:index,:destroy]
+
 end
 
 end

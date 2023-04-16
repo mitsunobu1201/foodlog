@@ -45,10 +45,18 @@
     <%= f.password_field :password, autocomplete: "current-password",class:"form-control pt-2 pb-2" ,placeholder:"パスワード"%>
   </div>
 
+
   <div class="actions">
     <%= f.submit "ログイン",class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>
   </div>
   </div>
+
+  <% if alert.present? %>
+    <div class="mt-4 text-danger">
+      <%= alert %>
+    </div>
+  <% end %>
+
   </div>
 
 <% end %>

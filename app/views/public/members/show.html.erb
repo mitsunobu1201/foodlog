@@ -104,15 +104,15 @@
 <div>
 <div class="row">
   <div class="col-md-3">
-<%= render 'public/comments/comments', comments: @comments_morning, timeframe:@timeframe=0,date:@date,member:@member.id %>
+<%= render 'public/comments/comments', comments: @comments_morning, timeframe:@timeframe="morning",date:@date,member:@member.id %>
     </div>
   <div class="col-md-3">
-<%= render 'public/comments/comments', comments: @comments_lunch, timeframe:@timeframe=1,date:@date,member:@member.id %>
+<%= render 'public/comments/comments', comments: @comments_lunch, timeframe:@timeframe="lunch",date:@date,member:@member.id %>
     </div>
   <div class="col-md-3">
-<%= render 'public/comments/comments', comments: @comments_dinner, timeframe:@timeframe=2,date:@date,member:@member.id %>
+<%= render 'public/comments/comments', comments: @comments_dinner, timeframe:@timeframe="dinner",date:@date,member:@member.id %>
     </div>
   <div class="col-md-3">
-<%= render 'public/comments/comments', comments: @comments_snack, timeframe:@timeframe=3,date:@date,member:@member.id %>
+<%= render 'public/comments/comments', comments: @comments_snack, timeframe:@timeframe="snack",date:@date,member:@member.id %>
     </div>
 </div>

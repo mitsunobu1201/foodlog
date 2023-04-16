@@ -9,8 +9,9 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to admin_root_path
     else
       redirect_to root_path
+    end
+
   end
-end
 
   # POST /resource/sign_in
   # def create

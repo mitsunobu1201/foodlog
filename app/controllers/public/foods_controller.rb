@@ -15,8 +15,7 @@ class Public::FoodsController < ApplicationController
     if @food.save
     redirect_to foods_path
     else
-
-    render 'new'
+    redirect_to new_food_path
     end
 
   end
