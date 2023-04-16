@@ -1,5 +1,5 @@
 class Public::NicesController < ApplicationController
-
+  before_action :authenticate_user!
   def index
    @nices = Nice.where(nice_user_id: current_user.id)
   end

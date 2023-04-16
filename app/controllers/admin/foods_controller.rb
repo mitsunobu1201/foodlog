@@ -1,5 +1,7 @@
 class Admin::FoodsController < ApplicationController
 
+before_action :authenticate_admin!
+
   def index
     @foods = Food.all
   end

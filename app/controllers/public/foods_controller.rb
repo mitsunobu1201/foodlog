@@ -1,4 +1,5 @@
 class Public::FoodsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @newfood = Food.new
 

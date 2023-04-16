@@ -7,8 +7,10 @@ class Public::SessionsController < Devise::SessionsController
   def new
     if admin_signed_in?
       redirect_to admin_root_path
-    end
+    else
+      redirect_to root_path
   end
+end
 
   # POST /resource/sign_in
   # def create
