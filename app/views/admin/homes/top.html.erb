@@ -1,0 +1,23 @@
+<% if admin_signed_in? %>
+
+  <div class="row align-items-center text-center" style="margin-top:150px">
+  <div class="col-md-12">
+    <h1>FoodLog 管理画面</h1>
+  </div>
+  </div>
+
+  <div class="row align-items-center text-center" style="margin-top:50px">
+  <div class="col-md-12 mb-2">
+    <%= link_to "Users",admin_members_path,class:"text-decoration-none",style:"font-size:40px" %>
+  </div>
+    <div class="col-md-12 mb-2">
+    <%= link_to "Comments",admin_comments_path,class:"text-decoration-none",style:"font-size:40px" %>
+  </div>
+    <div class="col-md-12 mb-2">
+    <%= link_to "Foods",admin_foods_path,class:"text-decoration-none",style:"font-size:40px" %>
+  </div>
+    <div class="col-md-12 mb-2">
+    <%= link_to "Nices",admin_nices_path,class:"text-decoration-none",style:"font-size:40px" %>
+  </div>
+  </div>
+  <% end %>

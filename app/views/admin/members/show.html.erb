@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+   <div class="col-8 m-0 mb-3">
+<h3 class="mb-5">プロフィール編集</h3>
+<%= form_with model:@member,url: admin_member_path(@member),local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :height,"メールアドレス" %><br />
+    <%= @member.email %>
+  </div>
+     <div class="mb-3">
+    <%= f.label :height,"ニックネーム" %><br />
+    <%= f.text_field :name,class:"form-control pt-2 pb-2",placeholder:"ニックネーム"%>
+  </div>
+     <div class="mb-3">
+    <%= f.label :height,"身長" %><br />
+    <%= f.number_field :height,class:"form-control"%>
+  </div>
+      <div class="mb-3">
+    <%= f.label :weight,"体重" %><br />
+    <%= f.number_field :weight,class:"form-control",placeholder:"kcal単位"%>
+  </div>
+    <div class="mb-3">
+    <%= f.label :purpose,"目的" %><br />
+      <%= f.radio_button :purpose,"training" %>筋力トレーニング<br />
+      <%= f.radio_button :purpose,"diet" %>ダイエット<br />
+      <%= f.radio_button :purpose,"health" %>健康維持<br />
+      <%= f.radio_button :purpose,"etc" %>その他<br />
+  </div>
+    <div class="mb-3">
+    <%= f.label :profile,"説明" %><br />
+    <%= f.text_area :profile,class:"form-control",placeholder:"食品の説明を入力してください。"%>
+  </div>
+      <div class="mb-3">
+    <%= f.label :status,"会員ステータス" %><br />
+      <%= f.radio_button :status,"false" %>有効
+      <%= f.radio_button :status,"true" %>無効
+  </div>
+   <%=f.submit '編集',class: "btn btn-sm btn btn-success"%>
+<% end %>
+  </div>
+    </div>

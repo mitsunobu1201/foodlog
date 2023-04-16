@@ -1,6 +1,6 @@
   <% comments.each do |comment| %>
   <div class="border-top border-bottom">
-  <p><%= comment.user.name %>さん　<%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></p>
+  <p><%= User.find(comment.comment_user_id).name %>さん　<%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></p>
   <p><%= comment.comment %><br>
   <% if current_user.id == comment.comment_user_id %>
   <%= link_to "削除", comment_path(comment),data:{ "turbo-method": :delete } %>

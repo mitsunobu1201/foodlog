@@ -1,0 +1,28 @@
+  <h2 class="mt-3">いいね！一覧</h2>
+<% if @nices.empty? %>
+<h3 class="mt-5">まだいいねされた投稿がありません。</h3>
+<% else %>
+  <div class="row">
+    <div class="col-md-12 mx-auto mt-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+      <th>いいね！したユーザー</th>
+      <th>いいね！されたユーザー</th>
+      <th>時間</th>
+      <th></th>
+          </tr>
+      </thead>
+        <tbody>
+<% @nices.each do |nice| %>
+<tr>
+<td><%= User.find(nice.user_id).name %></td>
+<td><%= User.find(nice.nice_user_id).name %></td>
+<td><%= nice.created_at %></td>
+<td><%= link_to "削除", admin_nice_path(nice.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"},class: "btn btn-danger" %></td>
+</tr>
+<% end %>
+</tbody>
+        </thead>
+      </table>
+      <% end %>

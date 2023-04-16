@@ -1,0 +1,34 @@
+  <h2 class="mt-3">会員一覧</h2>
+  <% if @members.empty? %>
+<h3 class="mt-5">ユーザーがいません。</h3>
+<% else %>
+
+  <div class="row">
+    <div class="col-md-12 mx-auto mt-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+      <th>ニックネーム</th>
+      <th>目的</th>
+      <th>プロフィール</th>
+      <th>会員ステータス</th>
+          </tr>
+      </thead>
+        <tbody>
+<% @members.each do |member| %>
+<tr>
+<td><%= link_to member.name, admin_member_path(member),class:"pb-2" %></td>
+<td><%= member.purpose_i18n %></td>
+<td><%= member.profile %></td>
+<% if member.status == false %>
+<td class="text-primary">有効</td>
+<% else %>
+<td class="text-danger">無効</td>
+<% end %>
+</tr>
+<% end %>
+</tbody>
+        </thead>
+      </table>
+
+  <% end %>

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
-      admin_root_path
+      admin_path
     else
       member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day)
     end

@@ -3,7 +3,13 @@
 
     <!--ロゴ-->
     <div class="row">
+      <% if user_signed_in? %>
       <a class="navbar-brand text-dark" href="/">
+      <% elsif admin_signed_in? %>
+      <a class="navbar-brand text-dark" href="/admin">
+      <% else %>
+      <a class="navbar-brand text-dark" href="/">
+      <% end %>
         <h1>FoodLog</h1>
       </a>
     </div>
@@ -30,7 +36,27 @@
             <li class="m-3">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
             </li>
+
+          <% elsif admin_signed_in? %>
+
+            <li class="m-3">
+              <%= link_to "Users", admin_members_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Comments", admin_comments_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Foods", admin_foods_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Nices", admin_nices_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Logout", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+
           <% else %>
+
             <li class="m-3">
               <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
             </li>
@@ -39,7 +65,6 @@
             </li>
             <li class="m-3">
               <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark border border-secondary rounded' %>
-
             </li>
 
           <% end %>
