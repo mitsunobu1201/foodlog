@@ -23,7 +23,9 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-
+            <li class="m-3 d-flex align-items-center">
+              ようこそ、<%= current_user.name %>さん！
+            </li>
             <li class="m-3">
               <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
             </li>
@@ -38,7 +40,9 @@
             </li>
 
           <% elsif admin_signed_in? %>
-
+            <li class="m-3 d-flex align-items-center">
+              ようこそ、管理者さん！
+            </li>
             <li class="m-3">
               <%= link_to "Users", admin_members_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
             </li>

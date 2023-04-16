@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 # 顧客用
 devise_for :users,skip: [:passwords],controllers: {
   registrations: "public/registrations",
@@ -33,7 +34,7 @@ scope module: 'public' do
 end
 
 namespace :admin do
-  get '/' => 'homes#top'
+  root :to => "homes#top"
   resources :members, only: [:index,:show,:update]
   resources :foods, only: [:index,:show,:update,:destroy]
   resources :comments, only: [:index,:show,:destroy]
