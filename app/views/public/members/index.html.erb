@@ -4,19 +4,19 @@
       <table class="table table-striped">
         <thead>
           <tr>
-      <th>ニックネーム</th>
-      <th>目的</th>
-      <th>プロフィール</th>
+            <th>ニックネーム</th>
+            <th>目的</th>
+            <th>プロフィール</th>
           </tr>
-      </thead>
-        <tbody>
-<% @members.each do |member| %>
-<tr>
-<td><%= link_to member.name, member_path(member, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"pb-2" %></td>
-<td><%= member.purpose_i18n %></td>
-<td><%= member.profile %></td>
-</tr>
-<% end %>
-</tbody>
         </thead>
-      </table>
+      <tbody>
+<% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.name, member_path(member, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"pb-2" %></td>
+        <td><%= member.purpose_i18n %></td>
+        <td><%= member.profile %></td>
+      </tr>
+<% end %>
+    </tbody>
+  </thead>
+</table>

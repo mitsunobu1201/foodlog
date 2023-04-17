@@ -1,24 +1,26 @@
-  <% comments.each do |comment| %>
+<% comments.each do |comment| %>
   <div class="border-top border-bottom">
-  <p><%= User.find(comment.comment_user_id).name %>さん　<%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></p>
-  <p><%= comment.comment %><br>
-  <% if current_user.id == comment.comment_user_id %>
-  <%= link_to "削除", comment_path(comment),data:{ "turbo-method": :delete } %>
-  </p>
-  <% end %>
+    <p><%= User.find(comment.comment_user_id).name %>さん　<%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></p>
+    <p><%= comment.comment %><br>
+      <% if current_user.id == comment.comment_user_id %>
+        <%= link_to "削除", comment_path(comment), data: { "turbo-method": :delete } %>
+      <% end %>
+    </p>
   </div>
-  <% end %>
+<% end %>
 
-  <%= form_with model:@comment,local:false do |f| %>
-  <%= f.hidden_field :ymd , value: date %>
-  <%= f.hidden_field :timeframe , value: timeframe %>
-  <%= f.hidden_field :user_id , value: member%>
+<%= form_with model: @comment, local: false do |f| %>
+  <%= f.hidden_field :ymd, value: date %>
+  <%= f.hidden_field :timeframe, value: timeframe %>
+  <%= f.hidden_field :user_id, value: member %>
 
-    <div class="form-group">
-      <%= f.label :comment %>
-      <%= f.text_area :comment, class: 'form-control'%>
-    </div>
-    <div class="form-group">
-      <%= f.submit '送信'%>
-    </div>
-  <% end %>
+  <div class="form-group">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit '送信' %>
+  </div>
+<% end %>
+

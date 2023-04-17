@@ -1,20 +1,21 @@
 <% if user_signed_in? %>
 
-  <div class="row align-items-center text-center" style="margin-top:150px">
+<div class="row align-items-center text-center" style="margin-top:150px">
   <div class="col-md-12 mb-5">
     <h1>"運動する全ての人へ"</h1>
   </div>
   <div class="col-md-12">
     <h2>食べたものをすべて記録し、可視化できます。</h2>
   </div>
-  </div>
+</div>
 
-  <div class="row align-items-center text-center" style="margin-top:100px">
+<div class="row align-items-center text-center" style="margin-top:100px">
   <div class="col-md-12 mb-2">
     <%= link_to "Go To Mypage", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"text-decoration-none",style:"font-size:40px" %>
   </div>
-  </div>
-  <% else %>
+</div>
+
+<% else %>
 
 <div class="row align-items-center text-center" style="margin-top:150px">
   <div class="col-md-12 mb-5">
@@ -23,54 +24,48 @@
   <div class="col-md-12">
     <h2>食べたものをすべて記録し、可視化できます。</h2>
   </div>
-  </div>
+</div>
 
-  <div class="row align-items-center text-center" style="margin-top:50px">
+<div class="row align-items-center text-center" style="margin-top:50px">
   <div class="col-md-12 mb-2">
     <h4 class="mb-4">ログイン</h4>
   </div>
-  </div>
+</div>
 
-  <div class="row align-items-center text-center">
+<div class="row align-items-center text-center">
   <div class="col-md-3 mx-auto">
-
-    <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
-  <div class="field mb-5">
-
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control pt-2 pb-2",placeholder:"メールアドレス"%>
+  
+<%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+    <div class="field mb-5">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control pt-2 pb-2",placeholder:"メールアドレス"%>
+    </div>
+    <div class="field mb-5">
+      <%= f.password_field :password, autocomplete: "current-password",class:"form-control pt-2 pb-2" ,placeholder:"パスワード"%>
+    </div>
+    <div class="actions">
+      <%= f.submit "ログイン",class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>
+    </div>
   </div>
-
-  <div class="field mb-5">
-
-    <%= f.password_field :password, autocomplete: "current-password",class:"form-control pt-2 pb-2" ,placeholder:"パスワード"%>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit "ログイン",class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>
-  </div>
-  </div>
-
+  
   <% if alert.present? %>
     <div class="mt-4 text-danger">
       <%= alert %>
     </div>
   <% end %>
-
-  </div>
+</div>
 
 <% end %>
 
-  <div class="row" style="margin-top:50px">
-    <div class="col-md-3 mx-auto mb-2 border-top">
+<div class="row" style="margin-top:50px">
+  <div class="col-md-3 mx-auto mb-2 border-top">
   </div>
+</div>
+<div class="row align-items-center text-center" style="margin-top:10px">
+  <div class="col-md-12 mx-auto mb-2">
+    アカウントをお持ちでは場合はこちらから
   </div>
-  <div class="row align-items-center text-center" style="margin-top:10px">
-    <div class="col-md-12 mx-auto mb-2">
-      アカウントをお持ちでは場合はこちらから
-    </div>
-      <div class="col-md-12 mx-auto">
-      <%= link_to "新規登録",new_user_registration_path %>
-    </div>
+    <div class="col-md-12 mx-auto">
+    <%= link_to "新規登録",new_user_registration_path %>
   </div>
-  <% end %>
+</div>
+<% end %>

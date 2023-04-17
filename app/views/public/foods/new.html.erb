@@ -1,34 +1,33 @@
 <div class="row justify-content-center">
    <div class="col-8 m-0 mb-3">
-<h3 class="mb-5">食品登録</h3>
+     <h3 class="mb-5">食品登録</h3>
 <%= form_with model:@newfood,url: foods_path,local: true do |f| %>
-     <div class="mb-3">
+    <div class="mb-3">
     <%= f.label :name,"食品名" %><br />
     <%= f.text_field :name,class:"form-control",placeholder:"例：バナナ"%>
-  </div>
-      <div class="mb-3">
+    </div>
+    <div class="mb-3">
     <%= f.label :calorie,"カロリー" %><br />
     <%= f.number_field :calorie,class:"form-control",placeholder:"kcal単位"%>
-  </div>
+    </div>
     <div class="mb-3">
     <%= f.label :protein,"タンパク質" %><br />
     <%= f.number_field :protein,class:"form-control",placeholder:"グラム単位"%>
-  </div>
-      <div class="mb-3">
+    </div>
+    <div class="mb-3">
     <%= f.label :fat,"脂質" %><br />
     <%= f.number_field :fat,class:"form-control",placeholder:"グラム単位"%>
-  </div>
-      <div class="mb-3">
+    </div>
+    <div class="mb-3">
     <%= f.label :carbohydrate,"炭水化物" %><br />
     <%= f.number_field :carbohydrate,class:"form-control",placeholder:"グラム単位"%>
-  </div>
+    </div>
     <div class="mb-3">
     <%= f.label :explanation,"説明" %><br />
     <%= f.text_area :explanation,class:"form-control",placeholder:"食品の説明を入力してください。"%>
-  </div>
+    </div>
    <%=f.submit '登録',class: "btn btn-sm btn btn-primary"%>
 
 <% end %>
-
   </div>
-    </div>
+</div>

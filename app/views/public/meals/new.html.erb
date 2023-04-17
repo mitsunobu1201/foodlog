@@ -1,34 +1,34 @@
 <div class="row justify-content-center">
-  <% if @foods.empty? %>
-  <h2>登録できる食事がありません。</h2>
-  <h5><%= link_to "まずこちらから食品を登録してください。",new_food_path %></h5>
+<% if @foods.empty? %>
+    <h2>登録できる食事がありません。</h2>
+    <h5><%= link_to "まずこちらから食品を登録してください。",new_food_path %></h5>
 <% else %>
-   <div class="col-8 m-0 mb-3">
+     <div class="col-8 m-0 mb-3">
 
-<h1>食事登録</h1>
-<%= form_with model:@newmeal,url: meals_path,local: true do |f| %>
-   <div class="mb-3">
-    <%= f.label :name,"食品名" %><br />
-    <%= f.collection_select(:food_id, @foods, :id, :name, {}, {class: "form-control"}) %>
+      <h1>食事登録</h1>
+      <%= form_with model:@newmeal,url: meals_path,local: true do |f| %>
+      <div class="mb-3">
+        <%= f.label :name,"食品名" %><br />
+        <%= f.collection_select(:food_id, @foods, :id, :name, {}, {class: "form-control"}) %>
 
-  </div>
-    <div class="mb-3">
-    <%= f.label :ymd,"日付" %><br />
-    <%= f.date_select :ymd, order: [:year, :month, :day], class: "form-control",selected: @selected_date %>
+      </div>
+      <div class="mb-3">
+      <%= f.label :ymd,"日付" %><br />
+      <%= f.date_select :ymd, order: [:year, :month, :day], class: "form-control",selected: @selected_date %>
 
-  </div>
-<div class="mb-3 form-check">
-  <%= f.label :timeframe, "時間帯" %><br>
-  <%= f.radio_button :timeframe, 0, checked: params[:timeframe].to_i == 0 %>朝食<br>
-  <%= f.radio_button :timeframe, 1, checked: params[:timeframe].to_i == 1 %>昼食<br>
-  <%= f.radio_button :timeframe, 2, checked: params[:timeframe].to_i == 2 %>夕食<br>
-  <%= f.radio_button :timeframe, 3, checked: params[:timeframe].to_i == 3 %>間食<br>
-</div>
-<div class="mb-3">
-    <%= f.select :quantity, [['個数選択',0],['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10]],selected: "1"%>
-  </div>
-   <%=f.submit '登録',class: "btn btn-sm btn btn-primary"%>
+      </div>
+      <div class="mb-3 form-check">
+        <%= f.label :timeframe, "時間帯" %><br>
+        <%= f.radio_button :timeframe, 0, checked: params[:timeframe].to_i == 0 %>朝食<br>
+        <%= f.radio_button :timeframe, 1, checked: params[:timeframe].to_i == 1 %>昼食<br>
+        <%= f.radio_button :timeframe, 2, checked: params[:timeframe].to_i == 2 %>夕食<br>
+        <%= f.radio_button :timeframe, 3, checked: params[:timeframe].to_i == 3 %>間食<br>
+      </div>
+      <div class="mb-3">
+          <%= f.select :quantity, [['個数選択',0],['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10]],selected: "1"%>
+      </div>
+         <%=f.submit '登録',class: "btn btn-sm btn btn-primary"%>
 <% end %>
-    </div>
+  </div>
 </div>
-          <% end %>
+<% end %>

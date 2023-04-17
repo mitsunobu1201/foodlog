@@ -13,18 +13,18 @@ before_action :authenticate_admin!
   end
 
   def update
-   @food = Food.find(params[:id])
+    @food = Food.find(params[:id])
    if @food.update(food_params)
-   redirect_to admin_foods_path
+    redirect_to admin_foods_path
    else
-   render "index"
+    render "index"
    end
   end
 
- def destroy
-  @food = Food.find(params[:id])
-  @food.destroy
-  redirect_to foods_path
- end
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to foods_path
+  end
 
 end

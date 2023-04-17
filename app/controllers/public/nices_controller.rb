@@ -20,8 +20,8 @@ class Public::NicesController < ApplicationController
 
 private
 
-def nice_params
-  params.permit(:ymd, :timeframe, :user_id,:_method).merge(nice_user_id: current_user.id)
-end
+  def nice_params
+    params.permit(:ymd, :timeframe, :user_id,:_method).merge(nice_user_id: current_user.id)
+  end
 
 end

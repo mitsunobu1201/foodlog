@@ -1,4 +1,4 @@
-  <h2 class="mt-3">食品一覧</h2>
+<h2 class="mt-3">食品一覧</h2>
   <div class="row">
     <div class="col-md-12 mx-auto mt-3">
       <table class="table table-striped">
@@ -11,30 +11,28 @@
         </tbody>
 <% else %>
           <tr>
-      <th>食品名</th>
-      <th>カロリー(kcal)</th>
-      <th>タンパク質(g)</th>
-      <th>脂質(g)</th>
-      <th>炭水化物(g)</th>
-      <th>説明</th>
-      <th></th>
+            <th>食品名</th>
+            <th>カロリー(kcal)</th>
+            <th>タンパク質(g)</th>
+            <th>脂質(g)</th>
+            <th>炭水化物(g)</th>
+            <th>説明</th>
+            <th></th>
           </tr>
-      </thead>
+        </thead>
         <tbody>
-              <% @foods.each do |food| %>
-      <tr>
-        <td><%= link_to food.name,edit_food_path(food.id) %></td>
-        <td><%= food.calorie %></td>
-        <td><%= food.protein %></td>
-        <td><%= food.fat %></td>
-        <td><%= food.carbohydrate %></td>
-        <td><%= food.explanation %></td>
-
-
-       <td><%= link_to "削除", food_path(food.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？\r\n削除すると今まで登録していた「#{h(food.name)}」に関する食事内容がすべて削除されます。"},class: "btn btn-danger" %></td>
-      </tr>
-      <% end %>
-            <% end %>
-  </tbody>
-</table>
+<% @foods.each do |food| %>
+        <tr>
+          <td><%= link_to food.name,edit_food_path(food.id) %></td>
+          <td><%= food.calorie %></td>
+          <td><%= food.protein %></td>
+          <td><%= food.fat %></td>
+          <td><%= food.carbohydrate %></td>
+          <td><%= food.explanation %></td>
+          <td><%= link_to "削除", food_path(food.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？\r\n削除すると今まで登録していた「#{h(food.name)}」に関する食事内容がすべて削除されます。"},class: "btn btn-danger" %></td>
+        </tr>
+  <% end %>
+<% end %>
+    </tbody>
+  </table>
 <table>
