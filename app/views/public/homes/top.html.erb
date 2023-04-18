@@ -10,9 +10,15 @@
 </div>
 
 <div class="row align-items-center text-center" style="margin-top:100px">
-  <div class="col-md-12 mb-2">
-    <%= link_to "Go To Mypage", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day),class:"text-decoration-none",style:"font-size:40px" %>
+  <div class="col-md-12 mb-5">
+    <%= link_to "Go To Mypage", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day), style: "text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px; font-size: 40px;" %>
+
   </div>
+    <% if notice.present? %>
+    <div class="mt-4 text-primary">
+      <h5><%= notice %></h5>
+    </div>
+  <% end %>
 </div>
 
 <% else %>
@@ -58,6 +64,7 @@
       <%= alert %>
     </div>
   <% end %>
+
 </div>
 
 <% end %>

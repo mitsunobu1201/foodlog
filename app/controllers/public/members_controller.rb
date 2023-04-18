@@ -2,7 +2,12 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    #ゲストユーザーがログインしている場合は一覧にゲストユーザーも表示する
+    if current_user.email == "guest@example.com"
     @members = User.all
+    else
+    @members = User.where.not(email: 'guest@example.com')
+    end
   end
 
   def show
