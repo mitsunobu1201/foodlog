@@ -14,6 +14,7 @@
         </tbody>
 
           <tr>
+      <th>ID</th>
       <th>食品名</th>
       <th>投稿ユーザー</th>
       <th>カロリー(kcal)</th>
@@ -27,6 +28,7 @@
         <tbody>
               <% @foods.each do |food| %>
       <tr>
+        <td><%= food.id %></td>
         <td><%= link_to food.name,admin_food_path(food.id) %></td>
         <td><%= User.find(food.user_id).name %></td>
         <td><%= food.calorie %></td>

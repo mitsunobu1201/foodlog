@@ -7,6 +7,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+      <th>ID</th>
       <th>コメントユーザー</th>
       <th>投稿先</th>
       <th>内容</th>
@@ -16,6 +17,7 @@
         <tbody>
 <% @comments.each do |comment| %>
 <tr>
+<td><%= comment.id%></td>
 <td><%= User.find(comment.comment_user_id).name %></td>
 <td><%= User.find(comment.user_id).name %></td>
 <td><%= comment.comment %></td>

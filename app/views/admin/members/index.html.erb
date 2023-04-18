@@ -8,6 +8,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+      <th>ID</th>
       <th>ニックネーム</th>
       <th>目的</th>
       <th>プロフィール</th>
@@ -17,6 +18,7 @@
         <tbody>
 <% @members.each do |member| %>
 <tr>
+<td><%= member.id %></td>
 <td><%= link_to member.name, admin_member_path(member),class:"pb-2" %></td>
 <td><%= member.purpose_i18n %></td>
 <td><%= member.profile %></td>
