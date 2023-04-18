@@ -49,24 +49,32 @@ class Public::MembersController < ApplicationController
 
   def edit
     @member= User.find(params[:id])
+
+    #ユーザー編集ページに他ユーザーがアクセスしていないか判定
     unless @member == current_user
       redirect_to  edit_member_path(current_user)
     end
   end
 
   def update
-   @member = User.find(params[:id])
-   if @member.update(member_params)
-   redirect_to root_path
-   else
-   render "index"
-   end
-  end
+    @member = User.find(params[:id])
+    #ユーザー更新に他ユーザーからパラメーターが送られていないか判定
 
+    if @member != current_user
+      render :index
+    else
+
+     if @member.update(member_params)
+      redirect_to member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day)
+     else
+      render :edit
+     end
+    end
+  end
   private
 
-  def member_params
-    params.permit(:user, keys: [ :height, :weight, :purpose, :profile])
-  end
+def member_params
+  params.require(:user).permit(:height, :weight, :purpose, :profile)
+end
 
 end
