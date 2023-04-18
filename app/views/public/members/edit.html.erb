@@ -4,9 +4,9 @@
 <%= form_with model:@member,url: member_path(@member),local: true do |f| %>
      <div class="mb-3">
     <%= f.label :height,"ニックネーム" %><br />
-    <%= @member.name %>
+    <%= @member.name %>(編集できません)
   </div>
-       <div class="mb-3">
+  <div class="mb-3">
     <%= f.label :height,"メールアドレス" %><br />
     <%= @member.email %>
   </div>

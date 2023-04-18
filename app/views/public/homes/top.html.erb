@@ -34,19 +34,25 @@
 
 <div class="row align-items-center text-center">
   <div class="col-md-3 mx-auto">
-  
+
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
-    <div class="field mb-5">
+    <div class="field mb-3">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control pt-2 pb-2",placeholder:"メールアドレス"%>
     </div>
     <div class="field mb-5">
       <%= f.password_field :password, autocomplete: "current-password",class:"form-control pt-2 pb-2" ,placeholder:"パスワード"%>
     </div>
-    <div class="actions">
-      <%= f.submit "ログイン",class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>
+    <div class="actions mb-4">
+      <%= f.submit "ログイン",class:"btn btn-sm btn btn-primary pt-2 pb-2 w-100"%>
+    </div>
+    <div>
+      <p>または</p>
+    </div>
+    <div>
+      <%= link_to "ゲストログイン（閲覧用）", homes_guest_sign_in_path, data: {turbo_method: :post },class: "btn btn-success w-100 " %>
     </div>
   </div>
-  
+
   <% if alert.present? %>
     <div class="mt-4 text-danger">
       <%= alert %>

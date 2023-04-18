@@ -49,6 +49,9 @@ class Public::MembersController < ApplicationController
 
   def edit
     @member= User.find(params[:id])
+    unless @member == current_user
+      redirect_to  edit_member_path(current_user)
+    end
   end
 
   def update
