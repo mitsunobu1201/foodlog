@@ -25,9 +25,9 @@
 <% if @today == @date %>
 <% @day_total = total_calorie - @tdee %>
 <% if @day_total < 0 %>
-<p class="text-primary">今日はあと<%= @day_total.round(0).abs %>Kcal食べれます！</p>
+<p class="text-primary text-decoration-underline"><i class="fa-solid fa-fire" style="color: #005eff;"></i> 今日はあと<%= @day_total.round(0).abs %>Kcal食べれます！</p>
 <% else %>
-<p class="text-danger">今日は<%= @day_total.round(0) %>Kcalオーバーしています！</p>
+<p class="text-danger text-decoration-underline"><i class="fa-solid fa-fire" style="color: #f00000;"></i> 今日は<%= @day_total.round(0) %>Kcalオーバーしています！</p>
 <% end %>
 
 
@@ -36,8 +36,8 @@
 
 <% @day_total = total_calorie - @tdee %>
 <% if @day_total < 0 %>
-<p class="text-primary">この日は<%= @day_total.round(0) %>Kcalでした！</p>
+<p class="text-primary text-decoration-underline"><i class="fa-solid fa-fire" style="color: #005eff;"></i> この日は<%= @day_total.round(0) %>Kcalでした！</p>
 <% else %>
-<p class="text-danger">この日は<%= @day_total.round(0) %>Kcalオーバーしています！</p>
+<p class="text-danger text-decoration-underline"><i class="fa-solid fa-fire" style="color: #f00000;"></i> この日は<%= @day_total.round(0) %>Kcalオーバーしています！</p>
 <% end %>
 <% end %>

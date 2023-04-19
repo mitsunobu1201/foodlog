@@ -64,6 +64,6 @@
 <% end %>
 </table>
 <% if @member == @current_member %>
-<p><%= link_to "New Meal",new_meal_path(timeframe: @timeframe,date: @date) %></p>
+<p><%= link_to "> New Meal",new_meal_path(timeframe: @timeframe,date: @date),class:"text-decoration-none" %></p>
 <% end %>
 

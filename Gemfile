@@ -78,6 +78,7 @@ gem "sassc-rails"
 gem 'bootstrap', '~> 5.1.3'
 gem 'mini_racer'
 gem 'chartkick'
+gem 'jquery-rails'
 
 #デプロイ
 gem 'dotenv-rails'

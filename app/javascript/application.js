@@ -9,3 +9,6 @@ import "@fortawesome/fontawesome-free"
 // Chartkick
 import "chartkick"
 import "Chart.bundle"
+
+//= require jquery
+//= require rails-ujs
