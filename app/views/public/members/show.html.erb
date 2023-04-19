@@ -1,3 +1,5 @@
+<%= render 'meals_total_sum', meals_morning: @meals_morning,meals_lunch: @meals_lunch,meals_dinner: @meals_dinner,meals_snack: @meals_snack %>
+
 <div class="row align-items-center pb-5">
   <div class="col-md-4">
   <h2><%= @year %>年<%= @month %>月<%= @day %>日(<%= @days[@weekday] %>)</h2>
@@ -33,6 +35,7 @@
     <p>目的：<%= @member.purpose_i18n %></p>
     <p><%= @member.profile %></p>
     <% if @member == @current_member %>
+    <%= render 'advice', member: @member,total_calorie:@total_calorie %>
     <p><%= link_to "いいね！した投稿", nices_path %></p>
 
     <p><%= link_to "プロフィール編集", edit_member_path(@current_member) %></p>
@@ -42,7 +45,7 @@
   </div>
   <div class="col-md-3">
     <h2>総合栄養情報</h2>
-    <%= render 'meals_total_sum', meals_morning: @meals_morning,meals_lunch: @meals_lunch,meals_dinner: @meals_dinner,meals_snack: @meals_snack %>
+
     <p>総カロリー：<%= @total_calorie %>kcal</p>
     <p>総タンパク質：<%= @total_protein %>g</p>
     <p>総脂質：<%= @total_fat %>g</p>
@@ -112,3 +115,4 @@
 <%= render 'public/comments/comments', comments: @comments_snack, timeframe:@timeframe="snack",date:@date,member:@member.id %>
     </div>
 </div>
+

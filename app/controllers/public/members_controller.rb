@@ -79,7 +79,7 @@ class Public::MembersController < ApplicationController
   private
 
 def member_params
-  params.require(:user).permit(:height, :weight, :purpose, :profile)
+  params.require(:user).permit(:height, :weight, :purpose, :profile,:sex,:birthday,:activity)
 end
 
 end

@@ -1,5 +1,7 @@
-<h2 style="padding-bottom:100px">過去の記録</h2>
-
+<h2 style="padding-bottom:100px">レコード</h2>
+<% if @records_y.empty? %>
+<h3>まだ記録がないため、レコードは表示できません。</h3>
+<% else %>
 <div class="row mb-5">
 
 <div class="row">
@@ -53,10 +55,12 @@
            when 3 then '#cd7f32'
          end %>
       <h3><i class="fa-solid fa-crown" style="color: <%= crown_color %>;"></i> 第<%= count %>位：<%= Food.find(food_id).name %></h3>
-      <h5>合計<%= total_quantity %>の数を食べました！</h5>
+      <h5>合計<%= total_quantity %>の<%= Food.find(food_id).name %>を食べました！</h5>
     </div>
   </div>
   <% count += 1 %>
 <% end %>
 
 </div>
+
+<% end %>

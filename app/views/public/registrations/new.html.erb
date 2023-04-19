@@ -22,16 +22,34 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control pt-2 pb-2",placeholder:"パスワード確認(6桁以上)" %>
   </div>
 
-  <div class="field pt-2 pb-2">
+  <div class="field pt-2 pb-5">
     <%= f.text_field :name,class:"form-control pt-2 pb-2",placeholder:"ニックネーム"%>
   </div>
+<p style="font-size:20px">性別</p>
+  <div class="field pb-3 form-check">
+
+      <%= f.radio_button :sex,"men" ,class:"form-check-input"%>男性<br />
+      <%= f.radio_button :sex,"women" ,class:"form-check-input"%>女性<br />
+  </div>
+
+    <div class="field pt-2 pb-4">
+              <p style="font-size:20px">誕生日</p>
+      <%= f.date_select :birthday, order: [:year, :month, :day], start_year: Date.today.year - 100,
+    end_year: Date.today.year,class: "form-control"%>
+    </div>
+
+    <script>
+    $('#date_sample').datepicker({
+        language:'ja'
+    });
+</script>
 
   <div class="field pt-2 pb-2">
-    <%= f.number_field :height,min:1,max:300,class:"form-control pt-2 pb-2",placeholder:"身長(cm)"%>
+    <%= f.number_field :height,min:1,max:300,step: 0.1,class:"form-control pt-2 pb-2",placeholder:"身長(cm)"%>
   </div>
 
     <div class="field pt-2 pb-2">
-    <%= f.number_field :weight,min:1,max:300,class:"form-control pt-2 pb-2",placeholder:"体重(kg)"%>
+    <%= f.number_field :weight,min:1,max:300,step: 0.1,class:"form-control pt-2 pb-2",placeholder:"体重(kg)"%>
   </div>
 
     <div class="field pt-2 pb-4">
@@ -45,7 +63,14 @@
       <%= f.radio_button :purpose,"health" ,class:"form-check-input"%>健康維持<br>
       <%= f.radio_button :purpose,"etc",class:"form-check-input" %>その他<br>
       </div>
-
+     <p style="font-size:20px">日常的に運動はしますか？</p>
+  <div class="field pb-2 form-check">
+      <%= f.radio_button :activity,"sedentary" ,class:"form-check-input"%>ほぼ運動しない<br />
+      <%= f.radio_button :activity,"light",class:"form-check-input" %>軽い運動<br />
+      <%= f.radio_button :activity,"moderate" ,class:"form-check-input"%>中等度の運動<br />
+      <%= f.radio_button :activity,"intense" ,class:"form-check-input"%>激しい運動<br />
+      <%= f.radio_button :activity,"very_intense" ,class:"form-check-input"%>非常に激しい運動<br />
+  </div>
 
   <div class="actions pt-2 pb-2">
     <%= f.submit "登録" ,class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>

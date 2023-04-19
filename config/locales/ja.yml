@@ -13,6 +13,18 @@ ja:
         health: 健康維持
         etc: その他
 
+      activity:
+        sedentary: 日常的にほぼ運動しない
+        light: 軽い運動
+        moderate: 中等度の運動
+        intense: 激しい運動
+        very_intense: 非常に激しい運動
+
+      sex:
+        men: 男性
+        women: 女性
+
+
     nice:
       timeframe:
         morning: 朝食
@@ -26,3 +38,5 @@ ja:
         lunch: 昼食
         dinner: 夕食
         snack: 間食
+
+

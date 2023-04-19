@@ -10,7 +10,10 @@
           <tr>
       <th>ID</th>
       <th>ニックネーム</th>
+      <th>性別</th>
+      <th>誕生日</th>
       <th>目的</th>
+      <th>活動量</th>
       <th>プロフィール</th>
       <th>会員ステータス</th>
           </tr>
@@ -20,7 +23,10 @@
 <tr>
 <td><%= member.id %></td>
 <td><%= link_to member.name, admin_member_path(member),class:"pb-2" %></td>
+<td><%= member.sex_i18n %></td>
+<td><%= member.birthday.strftime('%Y年%m月%d日') %>(<%= member.age%>歳)</td>
 <td><%= member.purpose_i18n %></td>
+<td><%= member.activity_i18n %></td>
 <td><%= member.profile %></td>
 <% if member.status == false %>
 <td class="text-primary">有効</td>

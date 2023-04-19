@@ -10,13 +10,21 @@
     <%= f.label :height,"メールアドレス" %><br />
     <%= @member.email %>
   </div>
+  <div class="mb-3">
+    <%= f.label :height,"誕生日" %><br />
+    <%= @member.birthday.strftime('%Y年%m月%d日') %>(<%= @member.age %>歳)
+  </div>
+  <div class="mb-3">
+    <%= f.label :height,"性別" %><br />
+    <%= @member.sex_i18n %>
+  </div>
      <div class="mb-3">
     <%= f.label :height,"身長" %><br />
-    <%= f.number_field :height,class:"form-control"%>
+    <%= f.number_field :height,min: 1, max: 300, step: 0.1,class:"form-control"%>
   </div>
       <div class="mb-3">
     <%= f.label :weight,"体重" %><br />
-    <%= f.number_field :weight,class:"form-control",placeholder:"kcal単位"%>
+    <%= f.number_field :weight,min: 1, max: 300, step: 0.1,class:"form-control",placeholder:"kcal単位"%>
   </div>
     <div class="mb-3">
     <%= f.label :purpose,"目的" %><br />
@@ -24,6 +32,14 @@
       <%= f.radio_button :purpose,"diet" %>ダイエット<br />
       <%= f.radio_button :purpose,"health" %>健康維持<br />
       <%= f.radio_button :purpose,"etc" %>その他<br />
+  </div>
+    <div class="mb-3">
+    <%= f.label :activity,"活動量" %><br />
+      <%= f.radio_button :activity,"sedentary" %>日常的にほぼ運動しない<br />
+      <%= f.radio_button :activity,"light" %>日常的に軽い運動<br />
+      <%= f.radio_button :activity,"moderate" %>日常的に中等度の運動<br />
+      <%= f.radio_button :activity,"intense" %>日常的に激しい運動<br />
+      <%= f.radio_button :activity,"very_intense" %>日常的に非常に激しい運動<br />
   </div>
     <div class="mb-3">
     <%= f.label :profile,"説明" %><br />
