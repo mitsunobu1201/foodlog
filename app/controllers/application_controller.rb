@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
   # ログイン後のリダイレクト先
 def after_sign_in_path_for(resource_or_scope)
   case resource_or_scope
+  
   when Admin
     admin_root_path
+    
   when User
     #会員ステータスが有効かチェック
     unless current_user.status == true

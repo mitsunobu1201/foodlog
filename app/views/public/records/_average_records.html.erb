@@ -1,0 +1,16 @@
+<% @total_calorie, @total_protein, @total_fat, @total_carbohydrate = 0, 0, 0, 0 %>
+
+<% records.each do |record| %>
+<% @total_calorie += record.food.calorie * record.quantity / dates %>
+<% @total_protein += record.food.protein  * record.quantity / dates %>
+<% @total_fat += record.food.fat  * record.quantity / dates %>
+<% @total_carbohydrate += record.food.carbohydrate  * record.quantity / dates %>
+<% @chart = [['タンパク質', @total_protein], ['脂質', @total_fat],['炭水化物',@total_carbohydrate]] %>
+<% end %>
+<div class="mt-5">
+  <h5 class="bg-info px-1">平均栄養素(合計栄養素 / 記録日数)</h5>
+  <p>カロリー：<%= number_with_precision(@total_calorie,precision: 1) %>kcal</p>
+  <p>タンパク質：<%= number_with_precision(@total_protein,precision: 1) %>g</p>
+  <p>脂質：<%= number_with_precision(@total_fat,precision: 1) %>g</p>
+  <p>炭水化物：<%= number_with_precision(@total_carbohydrate,precision: 1) %>g</p>
+</div>

@@ -3,7 +3,7 @@ class Public::MealsController < ApplicationController
 
   def new
     @newmeal = Meal.new
-    @foods = Food.all
+    @foods = Food.where(user_id: current_user.id)
     @selected_date = params[:date].to_date
   end
 

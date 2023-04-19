@@ -22,24 +22,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-            <li class="m-3 d-flex align-items-center">
-              ようこそ、<%= current_user.name %>さん！
-            </li>
-            <li class="m-3">
-              <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
-            </li>
-            <li class="m-3">
-              <%= link_to "MyPage", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day), class: 'nav-link text-dark border border-secondary rounded' %>
-            </li>
-            <li class="m-3">
-              <%= link_to "Users", members_path, class: 'nav-link text-dark border border-secondary rounded' %>
-            </li>
-            <li class="m-3">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
-            </li>
-
-          <% elsif admin_signed_in? %>
+          <% if admin_signed_in? %>
             <li class="m-3 d-flex align-items-center">
               ようこそ、管理者さん！
             </li>
@@ -59,6 +42,23 @@
               <%= link_to "Logout", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
             </li>
 
+          <% elsif user_signed_in? %>
+
+            <li class="m-3 d-flex align-items-center">
+              ようこそ、<%= current_user.name %>さん！
+            </li>
+            <li class="m-3">
+              <%= link_to "About", about_path, class: 'nav-link text-center text-dark border border-secondary rounded', style: "width: 80px" %>
+            </li>
+            <li class="m-3">
+              <%= link_to "MyPage", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day), class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "Users", members_path, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
+            <li class="m-3">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border border-secondary rounded' %>
+            </li>
           <% else %>
 
             <li class="m-3">

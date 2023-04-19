@@ -35,6 +35,7 @@ scope module: 'public' do
   resources :comments, only: [:create,:destroy]
   resources :dates, only: [:show]
   resources :nices, only: [:index,:create,:destroy]
+  resources :records, only: [:index]
   get "search" => "searches#index"
 end
 

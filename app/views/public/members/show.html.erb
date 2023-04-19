@@ -11,10 +11,11 @@
     <% end %>
 　<%= link_to "前の日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day) %>
   </div>
-  <div class="col-md-1 text-center">
-    <%= link_to "日付一覧",date_path(@member) %>
+  <div class="col-md-2 text-center">
+    <%= link_to "日付一覧",date_path(@member) %>　|
+    <%= link_to "レコード",records_path %>
   </div>
-  <div class="col-md-4 text-center">
+  <div class="col-md-3 text-center">
     <%= link_to "New Food",new_food_path %>　|
   　<%= link_to "Food List",foods_path %>
   </div>
@@ -49,7 +50,7 @@
   </div>
   <div class="col-md-4">
     <div>
-      <%= pie_chart @chart%>
+      <%= pie_chart @chart %>
     </div>
   </div>
 </div>

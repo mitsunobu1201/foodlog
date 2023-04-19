@@ -7,24 +7,26 @@
       <table class="table table-striped">
         <thead>
           <tr>
-      <th>ID</th>
-      <th>コメントユーザー</th>
-      <th>投稿先</th>
-      <th>内容</th>
-      <th></th>
+            <th>ID</th>
+            <th>コメントユーザー</th>
+            <th>投稿先</th>
+            <th>内容</th>
+            <th>時間</th>
+            <th></th>
           </tr>
-      </thead>
-        <tbody>
-<% @comments.each do |comment| %>
-<tr>
-<td><%= comment.id%></td>
-<td><%= User.find(comment.comment_user_id).name %></td>
-<td><%= User.find(comment.user_id).name %></td>
-<td><%= comment.comment %></td>
-<td><%= link_to "削除", comment_path(comment.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"},class: "btn btn-danger" %></td>
-</tr>
-<% end %>
-</tbody>
         </thead>
-      </table>
+      <tbody>
+<% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.id%></td>
+          <td><%= User.find(comment.comment_user_id).name %></td>
+          <td><%= User.find(comment.user_id).name %>(<%= comment.ymd %>：<%= comment.timeframe_i18n %>)</td>
+          <td><%= comment.comment %></td>
+          <td><%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></td>
+          <td><%= link_to "削除", comment_path(comment.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"},class: "btn btn-danger" %></td>
+        </tr>
+<% end %>
+      </tbody>
+    </thead>
+  </table>
 <% end %>
