@@ -4,7 +4,7 @@
 <% else %>
   <% @basal_metabolism = 9.247 * member.weight + 3.098 * member.height - 4.33 * member.age + 447.593 %>
 <% end %>
-<p>基礎代謝量：<%= @basal_metabolism.round(1) %>Kcal</p>
+<p>基礎代謝量：<%= @basal_metabolism.round(0) %>Kcal</p>
 
 
 <% case member.activity
@@ -19,7 +19,7 @@
   when "very_intense" then
     @tdee =  @basal_metabolism * 1.9
   end %>
-<p>総エネルギー消費量：<%= @tdee.round(1) %>Kcal</p>
+<p>総エネルギー消費量：<%= @tdee.round(0) %>Kcal</p>
 
 
 <% if @today == @date %>

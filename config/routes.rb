@@ -44,7 +44,7 @@ namespace :admin do
   root :to => "homes#top"
   resources :members, only: [:index,:show,:update]
   resources :foods, only: [:index,:show,:update,:destroy]
-  resources :comments, only: [:index,:show,:destroy]
+  resources :comments, only: [:index,:destroy]
   resources :nices, only: [:index,:destroy]
 
 end

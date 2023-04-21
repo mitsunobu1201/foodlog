@@ -1,4 +1,9 @@
   <h2 class="mt-3">コメント一覧</h2>
+  <% if notice.present? %>
+    <div class="mt-4 text-primary">
+      <h5><%= notice %></h5>
+    </div>
+  <% end %>
 <% if @comments.empty? %>
 <h3 class="mt-5">まだコメントされた投稿がありません。</h3>
 <% else %>
@@ -23,7 +28,7 @@
           <td><%= User.find(comment.user_id).name %>(<%= comment.ymd %>：<%= comment.timeframe_i18n %>)</td>
           <td><%= comment.comment %></td>
           <td><%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></td>
-          <td><%= link_to "削除", comment_path(comment.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"},class: "btn btn-danger" %></td>
+          <td><%= link_to "削除", admin_comment_path(comment.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"},class: "btn btn-danger" %></td>
         </tr>
 <% end %>
       </tbody>

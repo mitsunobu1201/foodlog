@@ -1,9 +1,20 @@
 <% comments.each do |comment| %>
   <div class="border-top border-bottom">
     <p><%= User.find(comment.comment_user_id).name %>さん　<%= comment.created_at.strftime('%Y-%-m-%-d %H:%M:%S') %></p>
-    <p><%= comment.comment %><br>
+
+<% hashtags = comment.comment.scan(/#[\p{hiragana}\p{katakana}\p{Han}\p{Alpha}！？、。「」・：；（）『』「」]+/) %>
+<p>
+    <%= comment.comment.gsub(/#[\p{hiragana}\p{katakana}\p{Han}\p{Alpha}！？、。「」・：；（）『』「」]+/, '') %><br>
+
+<% hashtags.each do |hashtag| %>
+  <% hashtag_without_sharp = hashtag.gsub("#", "") %>
+  <%= link_to hashtag, search_path(word: hashtag_without_sharp, range: "MyComment Tag") %><br>
+<% end %>
+
+</p>
+
       <% if current_user.id == comment.comment_user_id %>
-        <%= link_to "削除", comment_path(comment), data: { "turbo-method": :delete } %>
+        <%= link_to "削除", comment_path(comment), data: { "turbo-method": :delete },class:"btn btn-sm btn btn-danger" %>
       <% end %>
     </p>
   </div>
@@ -14,13 +25,12 @@
   <%= f.hidden_field :timeframe, value: timeframe %>
   <%= f.hidden_field :user_id, value: member %>
 
-  <div class="form-group">
-    <%= f.label :comment %>
+  <div class="form-group mt-2">
     <%= f.text_area :comment, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.submit '送信' %>
+  <div class="form-group mt-1">
+    <%= f.submit 'コメント送信',class:"btn btn-sm btn btn-primary"%>
   </div>
 <% end %>
 
