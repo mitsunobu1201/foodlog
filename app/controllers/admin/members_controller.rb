@@ -13,7 +13,7 @@ class Admin::MembersController < ApplicationController
    if @member.update(member_params)
        redirect_to admin_members_path
      else
-       render "index"
+       render "show", status: :unprocessable_entity
      end
   end
 

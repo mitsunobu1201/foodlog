@@ -1,7 +1,6 @@
 <% if user_signed_in? %>
 
 <div class="row align-items-center text-center top-img">
-  <img src="<%= image_path('013.jpg') %>">
   <div class="col-md-12 mb-5">
     <h1>"運動する全ての人へ"</h1>
   </div>
@@ -14,13 +13,6 @@
   <div class="col-md-12 mb-5">
     <%= link_to "Go To Mypage", member_path(current_user.id, year: Time.zone.now.year, month: Time.zone.now.month, day: Time.zone.now.day), style: "text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px; font-size: 40px;" %>
 
-  </div>
-    <% if notice.present? %>
-    <div class="mt-4 text-primary">
-      <h5><%= notice %></h5>
-    </div>
-  <% end %>
-</div>
 
 <% else %>
 
@@ -43,6 +35,7 @@
   <div class="col-md-3 mx-auto">
 
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+  <%= render "public/shared/error_messages", resource: @user %>
     <div class="field mb-3">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control pt-2 pb-2",placeholder:"メールアドレス"%>
     </div>
@@ -65,6 +58,7 @@
       <%= alert %>
     </div>
   <% end %>
+
 
 </div>
 

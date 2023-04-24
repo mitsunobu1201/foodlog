@@ -17,7 +17,7 @@ before_action :authenticate_admin!
    if @food.update(food_params)
     redirect_to admin_foods_path
    else
-    render "index"
+    render "show",status: :unprocessable_entity
    end
   end
 
@@ -27,4 +27,9 @@ before_action :authenticate_admin!
     redirect_to foods_path
   end
 
+  private
+
+  def food_params
+    params.require(:food).permit(:name, :calorie, :protein, :fat, :carbohydrate, :explanation)
+  end
 end

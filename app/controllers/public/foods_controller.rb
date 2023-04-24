@@ -30,9 +30,10 @@ class Public::FoodsController < ApplicationController
     @food = Food.find(params[:id])
     if current_user.id == @food.user_id
     if @food.update(food_params)
+      flash[:notice] =  "#{@food.name}の編集に成功しました。"
       redirect_to foods_path
     else
-      render :edit
+      render "edit",status: :unprocessable_entity
     end
 
     else
@@ -46,8 +47,10 @@ class Public::FoodsController < ApplicationController
     if current_user.id == @food.user_id
 
     @food.destroy
+    flash[:notice] =  "#{@food.name}の削除に成功しました。"
     redirect_to foods_path
     else
+    flash[:alert] =  "#{@food.name}の削除に失敗しました。"
     redirect_to foods_path
     end
   end

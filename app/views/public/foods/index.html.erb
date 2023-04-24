@@ -1,4 +1,15 @@
 <h2 class="mt-3">食品一覧</h2>
+
+<% if notice.present? %>
+    <div class="mt-4 text-primary">
+      <h4><%= notice %></h4>
+    </div>
+  <% elsif alert.present? %>
+      <div class="mt-4 text-danger">
+      <h4><%= alert %></h4>
+    </div>
+  <% end %>
+  
 <% if @foods.empty? %>
 <h3 class="mt-5">まだ登録された食品はありません。</h3>
 <% else %>

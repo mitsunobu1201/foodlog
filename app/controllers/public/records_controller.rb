@@ -1,6 +1,6 @@
 class Public::RecordsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
 
     #1年、1ヶ月、1週間のレコード取得
@@ -14,6 +14,7 @@ class Public::RecordsController < ApplicationController
     @records_dates_w = Meal.where(user_id: current_user.id).where("ymd >= ?", 1.week.ago).group(:ymd).distinct.count
 
     @top_meals = Meal.select("food_id, SUM(quantity) as total_quantity").where(user_id: current_user.id).group(:food_id).order("SUM(quantity) DESC").limit(3).map { |meal| [meal.food_id, meal.total_quantity] }
+
   end
 
 end

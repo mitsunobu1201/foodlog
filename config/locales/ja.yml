@@ -1,4 +1,3 @@
-
 ja:
   #月選択の文字化け対策
   date:
@@ -40,3 +39,47 @@ ja:
         snack: 間食
 
 
+  activerecord:
+    errors:
+      models:
+        food:
+          attributes:
+            name:
+              blank: を入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            calorie:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            protein:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            fat:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            carbohydrate:
+              blank: を入力してください。
+              not_a_number: は数字で入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+            explanation:
+              blank: を入力してください。
+              too_short: は%{count}文字以上に設定して下さい。
+              too_long: は%{count}文字以下に設定して下さい。
+
+
+
+    attributes:
+      food:
+        name: 食品名
+        calorie: カロリー
+        protein: タンパク質
+        fat: 脂質
+        carbohydrate: 炭水化物
+        explanation: 説明

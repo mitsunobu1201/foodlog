@@ -26,4 +26,16 @@ class User < ApplicationRecord
 
     age
   end
+
+#新規登録の追加バリデーション
+  validates :name,  presence: true,  length: { minimum: 1, maximum: 20 }
+  validates :height, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 300, allow_float: true }
+  validates :weight, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 300, allow_float: true }
+  validates :purpose, presence: true, length: { minimum: 1, maximum: 100 }
+  validates :profile, length: { minimum: 0, maximum: 150 }
+  validates :sex, presence: true
+  validates :activity, presence: true
+  validates :birthday, presence: true
+  validates :status, inclusion: { in: [true, false] }
+
 end

@@ -12,8 +12,8 @@
 </div>
 <div>
     <h5 class="bg-info px-1">合計栄養素</h5>
-  <p>カロリー：<%= @total_calorie %>kcal</p>
-  <p>タンパク質：<%= @total_protein %>g</p>
-  <p>脂質：<%= @total_fat %>g</p>
-  <p>炭水化物：<%= @total_carbohydrate %>g</p>
+  <p>カロリー：：<%= number_with_precision(@total_calorie,precision: 1) %>kcal</p>
+  <p>タンパク質：<%= number_with_precision(@total_calorie,precision: 1) %>g</p>
+  <p>脂質：<%= number_with_precision(@total_calorie,precision: 1) %>g</p>
+  <p>炭水化物：<%= number_with_precision(@total_calorie,precision: 1) %>g</p>
 </div>

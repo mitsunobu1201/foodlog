@@ -8,24 +8,26 @@
 
   <div class="row align-items-center">
   <div class="col-md-4 mx-auto">
-  <div class="field pt-2 pb-2">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"メールアドレス" %>
+  <p style="font-size:17px">メールアドレス&nbsp;<span class="badge bg-danger">必須</span></p>
+  <div class="field pb-5">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"例)user@gmail.com" %>
   </div>
-
-  <div class="field pt-2 pb-2">
+  <p style="font-size:17px">パスワード&nbsp;<span class="badge bg-danger">必須</span></p>
+  <div class="field ">
     <% if @minimum_password_length %>
     <% end %>
     <%= f.password_field :password, autocomplete: "new-password",class:"form-control pt-2 pb-2",placeholder:"パスワード(6桁以上)" %>
   </div>
 
-  <div class="field pt-2 pb-2">
+  <div class="field pt-2 pb-5">
     <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control pt-2 pb-2",placeholder:"パスワード確認(6桁以上)" %>
   </div>
 
+  <p style="font-size:17px">ニックネーム&nbsp;<span class="badge bg-danger">必須</span></p>
   <div class="field pt-2 pb-5">
-    <%= f.text_field :name,class:"form-control pt-2 pb-2",placeholder:"ニックネーム"%>
+    <%= f.text_field :name,class:"form-control pt-2 pb-2",placeholder:"例)たろう"%>
   </div>
-<p style="font-size:20px">性別</p>
+<p style="font-size:17px">性別&nbsp;<span class="badge bg-danger">必須</span></p>
   <div class="field pb-3 form-check">
 
       <%= f.radio_button :sex,"men" ,class:"form-check-input"%>男性<br />
@@ -33,7 +35,7 @@
   </div>
 
     <div class="field pt-2 pb-4">
-              <p style="font-size:20px">誕生日</p>
+              <p style="font-size:17px">誕生日&nbsp;<span class="badge bg-danger">必須</span></p>
       <%= f.date_select :birthday, order: [:year, :month, :day], start_year: Date.today.year - 100,
     end_year: Date.today.year,class: "form-control"%>
     </div>
@@ -43,19 +45,19 @@
         language:'ja'
     });
 </script>
-
-  <div class="field pt-2 pb-2">
-    <%= f.number_field :height,min:1,max:300,step: 0.1,class:"form-control pt-2 pb-2",placeholder:"身長(cm)"%>
+  <p style="font-size:17px">身長&nbsp;<span class="badge bg-danger">必須</span></p>
+  <div class="field pb-4">
+    <%= f.number_field :height,min:1,max:300,step: 0.1,class:"form-control pt-2 pb-2",placeholder:"cm"%>
   </div>
-
-    <div class="field pt-2 pb-2">
+  <p style="font-size:17px">体重&nbsp;<span class="badge bg-danger">必須</span></p>
+    <div class="field pb-4">
     <%= f.number_field :weight,min:1,max:300,step: 0.1,class:"form-control pt-2 pb-2",placeholder:"体重(kg)"%>
   </div>
-
-    <div class="field pt-2 pb-4">
+  <p style="font-size:17px">プロフィール</p>
+    <div class="field pb-4">
     <%= f.text_area :profile,class:"form-control pt-2 pb-2",placeholder:"プロフィール"%>
   </div>
-        <p style="font-size:20px">目的</p>
+        <p style="font-size:17px">目的&nbsp;<span class="badge bg-danger">必須</span></p>
     <div class="field pb-2 form-check">
 
       <%= f.radio_button :purpose,"training",class:"form-check-input" %>筋力トレーニング<br>
@@ -63,7 +65,7 @@
       <%= f.radio_button :purpose,"health" ,class:"form-check-input"%>健康維持<br>
       <%= f.radio_button :purpose,"etc",class:"form-check-input" %>その他<br>
       </div>
-     <p style="font-size:20px">日常的に運動はしますか？</p>
+     <p style="font-size:17px">日常的に運動はしますか？&nbsp;<span class="badge bg-danger">必須</span></p>
   <div class="field pb-2 form-check">
       <%= f.radio_button :activity,"sedentary" ,class:"form-check-input"%>ほぼ運動しない<br />
       <%= f.radio_button :activity,"light",class:"form-check-input" %>軽い運動<br />
@@ -77,19 +79,16 @@
     </div>
         <div class="field pt-2 pb-2 text-danger">
 
-    <% if @user.errors.any? %>
-      <p>フォームが正しく入力されていません。</p>
-      <p>再度入力してください。</p>
+
 
       <% if @user.errors.any? %>
-  <%= @user.errors.count %>件のエラーが発生しました
   <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
 <% end %>
-    <% end %>
+
   </div>
   </div>
   </div>

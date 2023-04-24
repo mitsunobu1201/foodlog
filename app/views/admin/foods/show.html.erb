@@ -1,26 +1,26 @@
 <div class="row justify-content-center">
-   <div class="col-8 m-0 mb-3">
+   <div class="col-8 m-0 mb-5">
 <h3 class="mb-5">食品編集</h3>
-<%= form_with model:@food,url: food_path(@food.id),local: true do |f| %>
+<%= form_with model:@food,url: admin_food_path(@food.id),local: true do |f| %>
      <div class="mb-3">
     <%= f.label :name,"食品名" %><br />
     <%= f.text_field :name,class:"form-control",placeholder:"例：バナナ"%>
   </div>
       <div class="mb-3">
     <%= f.label :calorie,"カロリー" %><br />
-    <%= f.number_field :calorie,class:"form-control",placeholder:"kcal単位"%>
+    <%= f.number_field :calorie,min:0,max:9999,class:"form-control",placeholder:"kcal単位"%>
   </div>
     <div class="mb-3">
     <%= f.label :protein,"タンパク質" %><br />
-    <%= f.number_field :protein,class:"form-control",placeholder:"グラム単位"%>
+    <%= f.number_field :protein,min:0,max:9999,step: 0.1,class:"form-control",placeholder:"グラム単位"%>
   </div>
       <div class="mb-3">
     <%= f.label :fat,"脂質" %><br />
-    <%= f.number_field :fat,class:"form-control",placeholder:"グラム単位"%>
+    <%= f.number_field :fat,min:0,max:9999,step: 0.1,class:"form-control",placeholder:"グラム単位"%>
   </div>
       <div class="mb-3">
     <%= f.label :carbohydrate,"炭水化物" %><br />
-    <%= f.number_field :carbohydrate,class:"form-control",placeholder:"グラム単位"%>
+    <%= f.number_field :carbohydrate,min:0,max:9999,step: 0.1,class:"form-control",placeholder:"グラム単位"%>
   </div>
     <div class="mb-3">
     <%= f.label :explanation,"説明" %><br />
@@ -28,5 +28,15 @@
   </div>
    <%=f.submit '編集',class: "btn btn-sm btn btn-success"%>
 <% end %>
+ <div class="field pt-3 pb-2 text-danger">
+  <% if @food.errors.any? %>
+    <ul>
+      <% @food.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+    </div>
   </div>
     </div>
+
