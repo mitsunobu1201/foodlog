@@ -8,19 +8,19 @@
   </div>
   <div class="mb-3">
     <%= f.label :calorie,"カロリー" %><br />
-    <%= f.number_field :calorie,class:"form-control",placeholder:"kcal単位"%>
+    <%= f.number_field :calorie,min:0,class:"form-control",placeholder:"kcal単位"%>
   </div>
   <div class="mb-3">
     <%= f.label :protein,"タンパク質" %><br />
-    <%= f.number_field :protein,class:"form-control",placeholder:"グラム単位"%>
+    <%= f.number_field :protein,min:0,max:9999,step: 0.1,class:"form-control",placeholder:"グラム単位"%>
   </div>
   <div class="mb-3">
     <%= f.label :fat,"脂質" %><br />
-    <%= f.number_field :fat,class:"form-control",placeholder:"グラム単位"%>
+    <%= f.number_field :fat,min:0,max:9999,step: 0.1,class:"form-control",placeholder:"グラム単位"%>
   </div>
   <div class="mb-3">
     <%= f.label :carbohydrate,"炭水化物" %><br />
-    <%= f.number_field :carbohydrate,class:"form-control",placeholder:"グラム単位"%>
+    <%= f.number_field :carbohydrate,min:0,max:9999,step: 0.1,class:"form-control",placeholder:"グラム単位"%>
   </div>
   <div class="mb-3">
     <%= f.label :explanation,"説明" %><br />

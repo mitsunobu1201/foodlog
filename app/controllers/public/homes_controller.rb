@@ -8,6 +8,7 @@ class Public::HomesController < ApplicationController
 
       #ゲストアカウントが停止されていないか判定
       guser = User.find_by(email: 'guest@example.com')
+
       unless guser.status == true
 
       #停止していなければサインイン処理
@@ -37,8 +38,9 @@ class Public::HomesController < ApplicationController
       end
 
       sign_in user
-      redirect_to root_path,
+      redirect_to root_path
 
+    else
       sign_out(current_user)
       flash[:alert] =  "現在ゲスト機能は利用できません。"
       root_path

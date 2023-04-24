@@ -76,9 +76,19 @@
     <%= f.submit "登録" ,class:"btn btn-sm btn btn-primary w-100 pt-2 pb-2"%>
     </div>
         <div class="field pt-2 pb-2 text-danger">
+
     <% if @user.errors.any? %>
       <p>フォームが正しく入力されていません。</p>
       <p>再度入力してください。</p>
+
+      <% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
     <% end %>
   </div>
   </div>
