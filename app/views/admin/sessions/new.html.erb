@@ -6,7 +6,7 @@
  <div class="row align-items-center text-center">
   <div class="col-md-3 mx-auto">
 
-    <%= form_with model: @admin, url: user_session_path, class: 'registration-main', local: true do |f| %>
+    <%= form_with model: @admin, url: admin_session_path, class: 'registration-main', local: true do |f| %>
   <div class="field mb-5">
 
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control pt-2 pb-2",placeholder:"メールアドレス"%>

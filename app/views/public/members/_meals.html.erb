@@ -18,7 +18,7 @@
         カロリー：
       </td>
       <td>
-        <%= @calorie %>kcal
+        <%= @calorie.round(0) %>kcal
       </td>
     </tr>
      <tr>
@@ -26,7 +26,7 @@
         タンパク質：
       </td>
       <td>
-        <%= @protein %>g
+        <%= @protein.round(1) %>g
       </td>
     </tr>
          <tr>
@@ -34,7 +34,7 @@
         脂質：
       </td>
       <td>
-        <%= @fat %>g
+        <%= @fat.round(1) %>g
       </td>
     </tr>
          <tr>
@@ -42,7 +42,7 @@
         炭水化物：
       </td>
       <td>
-        <%= @carbohydrate %>g
+        <%= @carbohydrate.round(1) %>g
       </td>
     </tr>
   </table>
@@ -63,6 +63,7 @@
       </tr>
 <% end %>
 </table>
+
 <% if @member == @current_member %>
 <p><%= link_to "> New Meal",new_meal_path(timeframe: @timeframe,date: @date),class:"text-decoration-none" %></p>
 <% end %>

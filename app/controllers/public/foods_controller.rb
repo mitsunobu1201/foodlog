@@ -2,7 +2,7 @@ class Public::FoodsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @newfood = Food.new
+    @food = Food.new
   end
 
   def index
@@ -13,9 +13,10 @@ class Public::FoodsController < ApplicationController
     @food = Food.new(food_params)
     @food.user_id = current_user.id
     if @food.save
+      flash[:notice] =  "#{@food.name}の登録に成功しました。"
       redirect_to foods_path
     else
-      render :new
+      render :new,status: :unprocessable_entity
     end
   end
 

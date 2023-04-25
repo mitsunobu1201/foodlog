@@ -9,7 +9,7 @@
       <h4><%= alert %></h4>
     </div>
   <% end %>
-  
+
 <% if @foods.empty? %>
 <h3 class="mt-5">まだ登録された食品はありません。</h3>
 <% else %>
@@ -31,10 +31,10 @@
 <% @foods.each do |food| %>
         <tr>
           <td><%= link_to food.name,edit_food_path(food.id) %></td>
-          <td><%= food.calorie %></td>
-          <td><%= food.protein %></td>
-          <td><%= food.fat %></td>
-          <td><%= food.carbohydrate %></td>
+          <td><%= food.calorie.round(0) %></td>
+          <td><%= food.protein.round(1) %></td>
+          <td><%= food.fat.round(1) %></td>
+          <td><%= food.carbohydrate.round(1) %></td>
           <td><%= food.explanation %></td>
           <td><%= link_to "削除", food_path(food.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？\r\n削除すると今まで登録していた「#{h(food.name)}」に関する食事内容がすべて削除されます。"},class: "btn btn-danger" %></td>
         </tr>
@@ -43,3 +43,9 @@
     </tbody>
   </table>
 <table>
+  </div>
+
+  <div class="col-md-12 pt-5 text-center">
+    <h4><%= link_to "> 食品を追加する" ,new_food_path %></h4>
+  </div>
+    </div>

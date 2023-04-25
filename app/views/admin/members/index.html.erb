@@ -38,5 +38,49 @@
 </tbody>
 </thead>
 </table>
+</div>
+</div>
+<% end %>
 
+
+  <% if @guest.nil? %>
+    <h3 class="mt-5">ユーザーがいません。</h3>
+  <% else %>
+<h2 class="mt-5">ゲストユーザー</h2>
+  <div class="row">
+    <div class="col-md-12 mx-auto mt-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+      <th>ID</th>
+      <th>ニックネーム</th>
+      <th>性別</th>
+      <th>誕生日</th>
+      <th>目的</th>
+      <th>活動量</th>
+      <th>プロフィール</th>
+      <th>会員ステータス</th>
+          </tr>
+      </thead>
+        <tbody>
+<tr>
+<td><%=  @guest.id %></td>
+<td><%= link_to  @guest.name, admin_member_path(@guest),class:"pb-2" %></td>
+<td><%=  @guest.sex_i18n %></td>
+<td><%=  @guest.birthday.strftime('%Y年%m月%d日') %>(<%=  @guest.age%>歳)</td>
+<td><%=  @guest.purpose_i18n %></td>
+<td><%=  @guest.activity_i18n %></td>
+<td><%=  @guest.profile %></td>
+<% if  @guest.status == false %>
+<td class="text-primary">有効</td>
+<% else %>
+<td class="text-danger">無効</td>
+<% end %>
+</tr>
+
+</tbody>
+</thead>
+</table>
+</div>
+</div>
 <% end %>

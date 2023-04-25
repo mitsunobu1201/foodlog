@@ -5,10 +5,13 @@ class Public::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
+
     if admin_signed_in?
       redirect_to admin_root_path
     else
+      flash[:alert] = "ログインに失敗しました。正しいメールアドレスとパスワードを入力してください。"
       redirect_to root_path
+
     end
 
   end

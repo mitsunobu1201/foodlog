@@ -46,10 +46,10 @@
   <div class="col-md-3">
     <h2>総合栄養情報</h2>
 
-    <p>総カロリー：<%= @total_calorie %>kcal</p>
-    <p>総タンパク質：<%= @total_protein %>g</p>
-    <p>総脂質：<%= @total_fat %>g</p>
-    <p>総炭水化物：<%= @total_carbohydrate %>g</p>
+    <p>総カロリー：<%= @total_calorie.round(0) %>kcal</p>
+    <p>総タンパク質：<%= @total_protein.round(1) %>g</p>
+    <p>総脂質：<%= @total_fat.round(1) %>g</p>
+    <p>総炭水化物：<%= @total_carbohydrate.round(1) %>g</p>
   </div>
   <div class="col-md-4">
     <div>
