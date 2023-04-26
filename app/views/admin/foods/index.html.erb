@@ -38,7 +38,7 @@
         <td><%= food.explanation %></td>
 
 
-       <td><%= link_to "削除", food_path(food.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？\r\n削除すると今まで登録していた「#{h(food.name)}」に関する食事内容がすべて削除されます。"},class: "btn btn-danger" %></td>
+       <td><%= link_to "削除", admin_food_path(food.id), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？\r\n削除すると今まで登録していた「#{h(food.name)}」に関する食事内容がすべて削除されます。"},class: "btn btn-danger" %></td>
       </tr>
       <% end %>
             <% end %>

@@ -32,21 +32,20 @@ class Public::HomesController < ApplicationController
       user.password = SecureRandom.urlsafe_base64
       end
 
-
+      sign_in user
 
       #サインインしたタイミングで登録情報をデフォルトに戻す
       if user.persisted?
-      user.update(name: guest_name, height: guest_height, weight: guest_weight,activity: guest_activity,sex: guest_sex,birthday: guest_birthday,purpose: guest_purpose, profile: guest_profile)
+        user.update(name: guest_name, height: guest_height, weight: guest_weight,activity: guest_activity,sex: guest_sex,birthday: guest_birthday,purpose: guest_purpose, profile: guest_profile)
       end
 
-      #ゲストアカウントが停止されていないか判定
-      guser = User.find_by(email: 'guest@example.com')
+       guser = User.find_by(email: 'guest@example.com')
       if guser.status == true
         flash[:alert] =  "現在ゲスト機能は利用できません。"
+        sign_out(current_user)
         redirect_to root_path
       else
-        sign_in user
-       redirect_to root_path
+        redirect_to root_path
     end
   end
 end

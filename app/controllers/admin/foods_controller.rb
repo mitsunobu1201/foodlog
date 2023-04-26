@@ -24,7 +24,7 @@ before_action :authenticate_admin!
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to foods_path
+    redirect_to admin_foods_path
   end
 
   private
