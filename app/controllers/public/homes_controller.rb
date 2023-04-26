@@ -6,17 +6,14 @@ class Public::HomesController < ApplicationController
   #ゲストログイン
   def guest_sign_in
 
-      #ゲストアカウントが停止されていないか判定
-      guser = User.find_by(email: 'guest@example.com')
-
-      unless guser.status == true
-
-      #停止していなければサインイン処理
       #ゲスト用デフォルト値
       guest_name  = "ゲスト"
       guest_email = "guest@example.com"
       guest_height = 160
       guest_weight = 60
+      guest_sex = "men"
+      guest_activity = "sedentary"
+      guest_birthday = Date.new(2000, 1, 1)
       guest_purpose = 3
       guest_profile = "ゲストユーザー用の体験アカウントです。"
       guest_status = false
@@ -26,24 +23,30 @@ class Public::HomesController < ApplicationController
       user.name = guest_name
       user.height = guest_height
       user.weight = guest_weight
+      user.activity = guest_activity
+      user.sex = guest_sex
+      user.birthday = guest_birthday
       user.purpose = guest_purpose
       user.profile = guest_profile
       user.status = guest_status
       user.password = SecureRandom.urlsafe_base64
       end
 
+
+
       #サインインしたタイミングで登録情報をデフォルトに戻す
       if user.persisted?
-      user.update(name: guest_name, height: guest_height, weight: guest_weight, purpose: guest_purpose, profile: guest_profile, status: guest_status)
+      user.update(name: guest_name, height: guest_height, weight: guest_weight,activity: guest_activity,sex: guest_sex,birthday: guest_birthday,purpose: guest_purpose, profile: guest_profile)
       end
 
-      sign_in user
-      redirect_to root_path
-
-    else
-      sign_out(current_user)
-      flash[:alert] =  "現在ゲスト機能は利用できません。"
-      root_path
+      #ゲストアカウントが停止されていないか判定
+      guser = User.find_by(email: 'guest@example.com')
+      if guser.status == true
+        flash[:alert] =  "現在ゲスト機能は利用できません。"
+        redirect_to root_path
+      else
+        sign_in user
+       redirect_to root_path
     end
   end
 end
