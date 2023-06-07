@@ -5,13 +5,13 @@
   <h2><%= @year %>年<%= @month %>月<%= @day %>日(<%= @days[@weekday] %>)</h2>
   </div>
   <div class="col-md-3 text-center">
-    <%= link_to "次の日",member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day),class:"text-decoration-none"%>　|
+    <%= link_to "前の日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day),class:"text-decoration-none" %>　|
     <% if @date == @today %>
     　今日　|
     <% else %>
     　<%= link_to "今日",member_path(@member, year: @today.year, month: @today.month, day: @today.day),class:"text-decoration-none" %>　|
     <% end %>
-　<%= link_to "前の日",member_path(@member, year: @yesterday.year, month: @yesterday.month, day: @yesterday.day),class:"text-decoration-none" %>
+　<%= link_to "次の日",member_path(@member, year: @tomorrow.year, month: @tomorrow.month, day: @tomorrow.day),class:"text-decoration-none"%>
   </div>
   <div class="col-md-2 text-center">
     <%= link_to "日付一覧",date_path(@member),class:"text-decoration-none" %>　|
