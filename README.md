@@ -11,7 +11,8 @@
 これらを目的に応じて簡単に記録でき、ユーザー同士が交流でき、その人の体作りを支援できるサイトがあればもっと世の中で便利になると思われます。<br>
 人生100年時代とも言われる世の中で、栄養を通して健康寿命向上に一役立てればとのと思いからこのサイトを着想いたしました。<br>
 
-※PFCバランス P=Protein,F=Fat,C=Carbohydrateの略。
+※PFCバ
+ランス P=Protein,F=Fat,C=Carbohydrateの略。
 
 ### ターゲットユーザ
 - トレーニングをしている人
@@ -24,12 +25,18 @@
 - どのくらいの量やカロリーを摂取しているか確認する時。
 - 現在、何を食べているか確認する時。
 
-## 設計書
-
-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## アプリケーション詳細設計書
+<img width="834" alt="アプリケーション詳細設計書" src="https://github.com/mitsunobu1201/foodlog/assets/87081727/472c5e74-5b65-4604-897b-eea6c1e29a25">
+
+## ER図
+<img width="886" alt="ER図" src="https://github.com/mitsunobu1201/foodlog/assets/87081727/989cb484-24a7-459e-8081-91033f487fac">
+
+## テーブル定義書
+https://docs.google.com/spreadsheets/d/1F6zyqIli6yZ-7syLWWM4fDefNhD5y2WfzTnRZgvDd30/edit#gid=1794873992
