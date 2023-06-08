@@ -14,7 +14,7 @@
 </p>
 
       <% if current_user.id == comment.comment_user_id %>
-        <%= link_to "削除", comment_path(comment), data: { "turbo-method": :delete },class:"btn btn-sm btn btn-danger" %>
+        <%= link_to "削除", comment_path(comment), data: { "turbo-method": :delete,"turbo-confirm": "コメントを削除しますか？" },class:"btn btn-sm btn btn-danger"%>
       <% end %>
     </p>
   </div>
@@ -30,7 +30,7 @@
   </div>
 
   <div class="form-group mt-1">
-    <%= f.submit 'コメント送信',class:"btn btn-sm btn btn-primary"%>
+    <%= f.submit 'コメント送信',class:"btn btn-sm btn btn-primary",data: { "turbo-confirm": "送信を実行しますか？" }%>
   </div>
 <% end %>
 

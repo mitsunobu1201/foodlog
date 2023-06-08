@@ -26,7 +26,7 @@
     <%= f.label :explanation,"説明" %><br />
     <%= f.text_area :explanation,class:"form-control",placeholder:"食品の説明を入力してください。"%>
     </div>
-   <%=f.submit '登録',class: "btn btn-sm btn btn-primary"%>
+   <%=f.submit '登録',class: "btn btn-sm btn btn-primary",data: { "turbo-confirm": "食品を登録しますか？" }%>
 <% end %>
 
  <div class="field pt-3 pb-2 text-danger">
