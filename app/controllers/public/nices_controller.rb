@@ -13,8 +13,13 @@ class Public::NicesController < ApplicationController
 
   def destroy
     nice = Nice.find_by(ymd: params[:ymd], timeframe: params[:timeframe], user_id: params[:user_id], nice_user_id: current_user.id)
-    nice.destroy
-   redirect_to request.referer
+
+    if current_user.id == nice.user_id
+      nice.destroy
+      redirect_to request.referer
+    else
+      render 'index'
+    end
   end
 
 

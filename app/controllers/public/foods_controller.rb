@@ -1,5 +1,7 @@
 class Public::FoodsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_food, only: [:edit, :update]
+  before_action :check_user_id, only: [:edit, :update]
 
   def new
     @food = Food.new
@@ -21,24 +23,15 @@ class Public::FoodsController < ApplicationController
   end
 
   def edit
-    @food = Food.find(params[:id])
-    unless current_user.id == @food.user_id
-      redirect_to foods_path
-    end
+
   end
 
   def update
-    @food = Food.find(params[:id])
-    if current_user.id == @food.user_id
     if @food.update(food_params)
       flash[:notice] =  "#{@food.name}の編集に成功しました。"
       redirect_to foods_path
     else
       render "edit",status: :unprocessable_entity
-    end
-
-    else
-      redirect_to foods_path
     end
   end
 
@@ -56,7 +49,19 @@ class Public::FoodsController < ApplicationController
     end
   end
 
+
   private
+
+  #パラメーターを変数にセット
+  def set_food
+    @food = Food.find(params[:id])
+  end
+
+  #カレントユーザーかチェック
+  def check_user_id
+    redirect_to foods_path unless current_user.id == @food.user_id
+  end
+
 
   def food_params
     params.require(:food).permit(:name, :calorie, :protein, :fat, :carbohydrate, :explanation)

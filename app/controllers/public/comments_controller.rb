@@ -1,6 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @comment = Comment.new(comment_params)
     @comment.comment_user_id = current_user.id
@@ -10,9 +10,15 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+
     comment = Comment.find(params[:id])
-    comment.destroy
-    redirect_to request.referer
+
+    if current_user.id == comment.user_id
+      comment.destroy
+      redirect_to request.referer
+    else
+      member_path
+    end
   end
 
 

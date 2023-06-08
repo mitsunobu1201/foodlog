@@ -23,8 +23,13 @@ class Public::MealsController < ApplicationController
 
   def destroy
     meal = Meal.find(params[:id])
-    meal.destroy
-    redirect_to request.referer
+
+    if current_user.id == meal.user_id
+      meal.destroy
+      redirect_to request.referer
+    else
+      food_path
+    end
   end
 
   private
